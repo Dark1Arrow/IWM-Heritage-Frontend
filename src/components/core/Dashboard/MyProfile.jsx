@@ -25,14 +25,14 @@ const MyProfile = () => {
       </h1>
 
       {/* Section 1: Top Profile Header */}
-      <div className="flex items-center justify-between rounded-2xl border border-gray-100 bg-[#FFF9F3] p-8 px-3 sm:px-12 shadow-sm">
-        <div className="flex items-center gap-x-4">
+      <div className="flex flex-col sm:flex-row items-center sm:items- justify-between rounded-2xl border border-[#E8E8E8] bg-[#FFF9F3] p-8 px-3 sm:px-12 shadow-sm gap-y-6">
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-x-6">
           <Img
             src={user?.image}
             alt={`profile-${user?.firstName}`}
-            className="aspect-square w-[78px] rounded-full object-cover border-2 border-white shadow-sm"
+            className="aspect-square w-[100px] rounded-full  object-cover border-2 border-white shadow-sm"
           />
-          <div className="space-y-1">
+          <div className="space-y-1 flex items-center sm:items-start flex-col">
             <p className="text-xl font-bold text-black capitalize">
               {user?.firstName + " " + user?.lastName}
             </p>
@@ -52,7 +52,7 @@ const MyProfile = () => {
       </div>
 
       {/* Section 2: Personal Details */}
-      <div className="my-10 flex flex-col gap-y-10 rounded-2xl border border-gray-100 bg-[#FFF9F3] p-8 px-7 sm:px-12 shadow-sm">
+      <div className="my-10 flex flex-col gap-y-10 rounded-2xl border border-[#E8E8E8] bg-[#FFF9F3] p-8 px-7 sm:px-12 shadow-sm">
         <div className="flex w-full items-center justify-between">
           <p className="text-xl font-bold text-black">Personal Details</p>
           <IconBtn
@@ -64,21 +64,21 @@ const MyProfile = () => {
           </IconBtn>
         </div>
 
-        <div className="flex max-w-[500px] justify-between">
+        <div className="flex flex-col sm:flex-row max-w-[500px] justify-between">
           <div className="flex flex-col gap-y-5">
             <div>
-              <p className="mb-1 text-sm text-gray-400 font-medium">First Name</p>
-              <p className="text-sm font-bold text-black capitalize">{user?.firstName}</p>
+              <p className="mb-1 text-lg text-black font-semibold">First Name</p>
+              <p className="text-sm font-bold text-[#5D5D5D] capitalize">{user?.firstName}</p>
             </div>
 
             <div>
-              <p className="mb-1 text-sm text-gray-400 font-medium">Account Type</p>
-              <p className="text-sm font-bold text-black capitalize">{user?.accountType}</p>
+              <p className="mb-1 text-lg text-black font-semibold">Account Type</p>
+              <p className="text-sm font-bold text-[#5D5D5D] capitalize">{user?.accountType}</p>
             </div>
 
             <div>
-              <p className="mb-1 text-sm text-gray-400 font-medium">Gender</p>
-              <p className="text-sm font-bold text-black capitalize">
+              <p className="mb-1 text-lg text-black font-semibold">Gender</p>
+              <p className="text-sm font-bold text-[#5D5D5D] capitalize">
                 {user?.additionalDetails?.gender ?? "Add Gender"}
               </p>
             </div>
@@ -86,18 +86,18 @@ const MyProfile = () => {
 
           <div className="flex flex-col gap-y-5">
             <div>
-              <p className="mb-1 text-sm text-gray-400 font-medium">Last Name</p>
-              <p className="text-sm font-bold text-black capitalize">{user?.lastName}</p>
+              <p className="mb-1 text-lg text-black font-semibold">Last Name</p>
+              <p className="text-sm font-bold text-[#5D5D5D] capitalize">{user?.lastName}</p>
             </div>
 
             <div>
-              <p className="mb-1 text-sm text-gray-400 font-medium">Email</p>
-              <p className="text-sm font-bold text-black">{user?.email}</p>
+              <p className="mb-1 text-lg text-black font-semibold">Email</p>
+              <p className="text-sm font-bold text-[#5D5D5D]">{user?.email}</p>
             </div>
 
             <div>
-              <p className="mb-1 text-sm text-gray-400 font-medium">Date Of Birth</p>
-              <p className="text-sm font-bold text-black">
+              <p className="mb-1 text-lg text-black font-semibold">Date Of Birth</p>
+              <p className="text-sm font-bold text-[#5D5D5D]">
                 {formattedDate(user?.additionalDetails?.dateOfBirth) ?? "Add Date of Birth"}
               </p>
             </div>
