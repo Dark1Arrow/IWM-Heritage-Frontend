@@ -1,4 +1,4 @@
-import { HERITAGE_URL, USER_URL } from "../constant";
+import { HERITAGE_URL, SAVED_URL, USER_URL } from "../constant";
 import { PROFILE_URL } from "../constant";
 
 export const userEndpoints = {
@@ -22,4 +22,17 @@ export const heritageEndpoints = {
     DELETE_HERITAGE_API : `${HERITAGE_URL}/deleteHeritage`,
     GET_HERITAGE_BY_ID_API : `${HERITAGE_URL}/getHeritage`,
     EDIT_HERITAGE_DETAILS_API : `${HERITAGE_URL}/editHeritage`,
+}
+
+export const savedHeritageEndpoints = {
+    TOGGLE_SAVED_HERITAGE_API : `${SAVED_URL}`,
+    GET_SAVED_HERITAGE_API : `${SAVED_URL}`,
+}
+
+export const reviewHeritageEndpints = {
+    CREATE_HERITAGE_REVIEW_API : `${SAVED_URL}`,
+    GET_HERITAGE_REVIEW_API : `${SAVED_URL}`,
+    TOGGLE_HERITAGE_REVIEW_LIKE_API : `${SAVED_URL}`,
+    DELETE_HERIATGE_REVIEW_API : `${SAVED_URL}`,
+    GET_HERITAGE_REVIEW_STATUS : `${SAVED_URL}`,
 }
