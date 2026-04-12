@@ -140,7 +140,7 @@ const EditProfile = () => {
         </div>
 
         <div className="flex justify-end gap-2">
-          <button onClick={() => navigate("/dashboard/my-profile")} className="cursor-pointer rounded-md bg-gray-700 py-2 px-5 font-semibold text-gray-50">
+          <button onClick={() => navigate("/dashboard/my-profile")} className="cursor-pointer rounded-md py-2 px-5 font-semibold bg-gray-200 text-gray-900 hover:bg-gray-900 hover:text-gray-200 duration-300 border border-[#c2c2c2]">
             Cancel
           </button>
           <IconBtn type="submit" text="save" />

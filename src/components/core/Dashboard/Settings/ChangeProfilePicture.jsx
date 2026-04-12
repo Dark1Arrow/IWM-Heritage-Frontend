@@ -63,7 +63,7 @@ const ChangeProfilePicture = () => {
         <Img
           src={previousSource || user?.image}
           alt={`profile-${user?.firstName}`}
-          className={"aspect-square w-[78px] rounded-full object-cover"}
+          className={"aspect-square w-[100px] rounded-full object-cover"}
         />
       </div>
 
@@ -80,7 +80,7 @@ const ChangeProfilePicture = () => {
           <button
             onClick={handleClick}
             disabled={loading}
-            className="cursor-pointer rounded-md py-2 px-5 font-semibold bg-gray-200 text-gray-900 hover:bg-gray-900 hover:text-gray-200 duration-300"
+            className="cursor-pointer rounded-md py-2 px-5 font-semibold bg-gray-200 text-gray-900 hover:bg-gray-900 hover:text-gray-200 duration-300 border border-[#c2c2c2]"
           >
             Select
           </button>

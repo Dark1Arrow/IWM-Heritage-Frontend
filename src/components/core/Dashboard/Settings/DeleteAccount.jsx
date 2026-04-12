@@ -14,7 +14,7 @@ const DeleteAccount = () => {
   const navigate = useNavigate()
 
   return (
-    <><div className="my-10 flex flex-row gap-x-5 rounded-md border-[1px] border-[#862127] bg-[#5D171F] p-8 px-6 sm:px-12">
+    <><div className="my-10 flex gap-5 sm:flex-row flex-col gap-x-5 rounded-md border-[1px] border-[#862127] bg-[#5D171F] p-8 px-6 sm:px-12">
       <div className="flex aspect-square h-14 w-14 items-center justify-center rounded-full bg-[#862127]">
         <FiTrash2 className="text-3xl text-pink-200" />
       </div>

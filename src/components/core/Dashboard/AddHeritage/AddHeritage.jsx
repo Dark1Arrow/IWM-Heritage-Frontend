@@ -293,8 +293,8 @@ export default function AddHeritage() {
             <button type="button" onClick={addTimeline} className="flex items-center gap-1 text-black underline text-sm"><MdOutlineAddCircle /> Add Event</button>
           </div>
           {timeline.map((item, index) => (
-            <div key={index} className="flex gap-2">
-              <input className="form-style w-[120px]" placeholder="Year" onChange={(e) => {
+            <div key={index} className="flex flex-col sm:flex-row gap-4 sm:items-center">
+              <input className="form-style sm:w-[120px]" placeholder="Year" onChange={(e) => {
                 const n = [...timeline]; n[index].year = e.target.value; setTimeline(n);
               }} />
               <input className="form-style flex-1" placeholder="Event Description" onChange={(e) => {
@@ -311,10 +311,10 @@ export default function AddHeritage() {
             <p className="text-xl font-semibold text-black">5. Architecture & Styles</p>
             <button type="button" onClick={addInfluence} className="flex items-center gap-1 text-black underline text-sm"><MdOutlineAddCircle /> Add Style</button>
           </div>
-          <textarea className="form-style min-h-[100px]" {...register("archDesc")} placeholder="Overall Architectural description..." />
+          <textarea className="form-style w-full min-h-[100px]" {...register("archDesc")} placeholder="Overall Architectural description..." />
           {archInfluences.map((inf, index) => (
-            <div key={index} className="flex gap-4 items-center bg-richblack-700 p-3 rounded-md">
-              <input className="form-style w-[30%]" placeholder="Style (e.g. Maratha)" onChange={(e) => { const n = [...archInfluences]; n[index].style = e.target.value; setArchInfluences(n); }} />
+            <div key={index} className="flex flex-col sm:flex-row gap-4 sm:items-center bg-richblack-700 p-3 rounded-md">
+              <input className="form-style sm:w-[30%]" placeholder="Style (e.g. Maratha)" onChange={(e) => { const n = [...archInfluences]; n[index].style = e.target.value; setArchInfluences(n); }} />
               <input className="form-style flex-1" placeholder="Specific Details" onChange={(e) => { const n = [...archInfluences]; n[index].details = e.target.value; setArchInfluences(n); }} />
               <button type="button" onClick={() => removeInfluence(index)} className="text-[#862127]"><MdDeleteOutline size={24} /></button>
             </div>
@@ -328,7 +328,7 @@ export default function AddHeritage() {
             <p className="text-xl font-semibold text-black">6. Cultural Significance</p>
             <button type="button" onClick={addSignificance} className="flex items-center gap-1 text-black underline text-sm"><MdOutlineAddCircle /> Add Point</button>
           </div>
-          <textarea className="form-style" {...register("significanceDesc")} placeholder="Broad significance description..." />
+          <textarea className="w-full min-h-[100px] form-style" {...register("significanceDesc")} placeholder="Broad significance description..." />
           <div className="grid grid-cols-1 gap-2">
             {significancePoints.map((point, index) => (
               <div key={index} className="flex gap-2">
