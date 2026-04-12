@@ -15,13 +15,14 @@ const toggleSaveHeritage = (heritageId, token) => {
         try {
             // Note: Since heritageId is a URL param in your router, 
             // we append it to the API URL
+            console.log("hey")
             const response = await apiConnector(
                 "POST", 
                 `${TOGGLE_SAVED_HERITAGE_API}/${heritageId}`,
                 null, // No body needed as ID is in the URL
                 { Authorization: `Bearer ${token}` }
             );
-
+console.log(response)
             if (!response?.data?.success) {
                 throw new Error(response.data.message);
             }
