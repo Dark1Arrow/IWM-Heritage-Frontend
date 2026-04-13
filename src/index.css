@@ -44,3 +44,698 @@ body{
   animation: shimmer 0.9s infinite;
   content: "";
 }
+
+
+/* Container & Background */
+.about-page {
+  background-color: #fff;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #5D3A26; /* Dark Brown */
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 50px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  font-size: 14px;
+}
+
+.nav-links span { cursor: pointer; opacity: 0.8; }
+.nav-links .active { opacity: 1; border-bottom: 1px solid white; }
+
+.profile-icon img {
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  object-fit: cover;
+}
+
+/* Page Title */
+.page-title {
+  text-align: center;
+  color: #8B2D3A; /* Deep Red/Maroon */
+  margin: 40px 0;
+  font-size: 32px;
+}
+
+/* Hero Section Layout */
+.hero-container {
+  display: flex;
+  max-width: 1100px;
+  margin: 0 auto;
+  gap: 50px;
+  padding: 20px;
+}
+
+/* Left Side Text Styling */
+.hero-text { flex: 1; }
+
+.main-heading {
+  color: #8B2D3A;
+  font-size: 36px;
+  line-height: 1.2;
+  margin-bottom: 15px;
+}
+
+.tagline {
+  color: #444;
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+.explore-btn {
+  background-color: #D4AF37; /* Golden Mustard */
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 30px;
+}
+
+.description {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.info-box {
+  background-color: #F2E3CA; /* Light Beige */
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 13px;
+  color: #5D3A26;
+  max-width: 350px;
+}
+
+/* Right Side Image Grid - The "Box" Layout */
+.image-grid {
+  flex: 1.2;
+  display: grid;
+  /* 3 columns, 2 rows */
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 12px;
+  height: 450px;
+}
+
+.grid-item {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* This keeps your images from looking stretched */
+}
+
+/* Grid Item Placements */
+.item-sarafa { grid-column: 1; grid-row: 1; }
+.item-lalbagh-1 { grid-column: 1; grid-row: 2; }
+.item-chappan { grid-column: 2; grid-row: 1 / span 2; } /* Tall center box */
+.item-annapurna { grid-column: 3; grid-row: 1; }
+.item-lalbagh-2 { grid-column: 3; grid-row: 2; }
+
+/* Labels on images */
+.label {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+}
+
+/* Global Wrapper */
+.about-page-wrapper {
+  background-color: #fff;
+  padding-bottom: 100px;
+}
+
+/* Page Title & Hero */
+.page-title {
+  text-align: center;
+  color: #8B2D3A;
+  margin: 40px 0;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.hero-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 50px;
+  padding: 0 20px;
+}
+
+.hero-text { flex: 1; }
+
+.main-heading {
+  color: #8B2D3A;
+  font-size: 36px;
+  line-height: 1.2;
+  margin-bottom: 15px;
+}
+
+.tagline { color: #444; font-size: 16px; margin-bottom: 25px; }
+
+.explore-btn {
+  background-color: #D4AF37;
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 25px;
+}
+
+.description { color: #666; font-size: 14px; margin-bottom: 30px; line-height: 1.5; }
+
+.info-box {
+  background-color: #F2E3CA;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 13px;
+  color: #5D3A26;
+  max-width: 380px;
+}
+
+/* Hero Grid Layout */
+.image-grid {
+  flex: 1.2;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 200px);
+  gap: 12px;
+}
+
+.grid-item { position: relative; border-radius: 12px; overflow: hidden; }
+.grid-item img { width: 100%; height: 100%; object-fit: cover; }
+
+.item-sarafa { grid-column: 1; grid-row: 1; }
+.item-lalbagh-1 { grid-column: 1; grid-row: 2; }
+.item-chappan { grid-column: 2; grid-row: 1 / span 2; }
+.item-annapurna { grid-column: 3; grid-row: 1; }
+.item-lalbagh-2 { grid-column: 3; grid-row: 2; }
+
+.label {
+  position: absolute; bottom: 10px; left: 10px;
+  color: white; font-size: 12px; font-weight: bold;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+}
+
+/* --- Challenges Section CSS --- */
+.challenges-section {
+  max-width: 1200px;
+  margin: 100px auto 0;
+  padding: 0 20px;
+}
+
+.challenges-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+  align-items: flex-start;
+}
+
+.challenges-title-red {
+  color: #8B2D3A;
+  font-size: 30px;
+  flex: 1;
+}
+
+.challenges-subtitle {
+  color: #555;
+  font-size: 16px;
+  flex: 1;
+  text-align: right;
+  max-width: 450px;
+}
+
+.challenges-cards-grid {
+  display: flex;
+  gap: 20px;
+}
+
+.challenge-info-card {
+  flex: 1;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.card-image-box { width: 100%; height: 160px; background: #fafafa; }
+.card-image-box img { width: 100%; height: 100%; object-fit: cover; }
+
+.card-text-box { padding: 20px; text-align: center; }
+.card-text-box h3 { color: #6D3D2F; font-size: 18px; margin-bottom: 10px; }
+.card-text-box p { color: #666; font-size: 13px; line-height: 1.5; }
+/* --- Global Font Import (Zaruri hai serif look ke liye) --- */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@400;600;700&display=swap');
+
+/* --- About Page Title (Sabse upar wala) --- */
+.page-title {
+  text-align: center;
+  color: #8B2D3A; 
+  margin: 60px 0 40px 0;
+  font-family: 'Playfair Display', serif; /* Image jaisa serif font */
+  font-size: 48px; /* Bada aur bold size */
+  font-weight: 900; 
+}
+
+/* --- Hero Section Heading --- */
+.main-heading {
+  color: #8B2D3A;
+  font-family: 'Playfair Display', serif;
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  max-width: 500px; /* Text wrapping exactly like image */
+}
+
+/* --- Challenges Section Heading --- */
+.challenges-title-red {
+  color: #8B2D3A;
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  font-weight: 800;
+  flex: 1;
+  line-height: 1.1;
+  margin: 0;
+}
+
+/* --- Subtitles (For consistency) --- */
+.tagline, .challenges-subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: #444;
+}
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@400;600;700&display=swap');
+
+.about-page-wrapper {
+  background-color: #fff;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
+
+/* --- Common Headings --- */
+.page-title {
+  text-align: center;
+  color: #8B2D3A;
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 900;
+  margin: 50px 0;
+}
+
+.heading-serif {
+  font-family: 'Playfair Display', serif;
+  color: #8B2D3A;
+  font-size: 38px;
+  font-weight: 900;
+  line-height: 1.1;
+  flex: 1;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto 50px;
+  padding: 0 20px;
+}
+
+.subtitle-right {
+  flex: 1;
+  text-align: right;
+  color: #444;
+  font-weight: 600;
+  max-width: 450px;
+  font-size: 16px;
+}
+
+/* --- HERO SECTION --- */
+.hero-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto 100px;
+  gap: 50px;
+  padding: 0 20px;
+}
+
+.hero-text { flex: 1; }
+.main-heading {
+  color: #8B2D3A;
+  font-family: 'Playfair Display', serif;
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.explore-btn {
+  background-color: #D4AF37;
+  border: none;
+  color: white;
+  padding: 12px 35px;
+  border-radius: 25px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-bottom: 25px;
+}
+
+.info-box {
+  background-color: #F2E3CA;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 380px;
+  border-left: 5px solid #D4AF37;
+}
+
+/* Hero Grid */
+.image-grid {
+  flex: 1.2;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 200px);
+  gap: 12px;
+}
+.grid-item { position: relative; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+.grid-item img { width: 100%; height: 100%; object-fit: cover; }
+.item-chappan { grid-column: 2; grid-row: 1 / span 2; }
+.label { position: absolute; bottom: 10px; left: 10px; color: white; font-weight: 700; font-size: 12px; text-shadow: 1px 1px 4px #000; }
+
+/* --- CHALLENGES SECTION --- */
+.challenges-section { max-width: 1200px; margin: 0 auto 100px; }
+.challenges-cards-grid { display: flex; gap: 20px; padding: 0 20px; }
+.challenge-info-card { flex: 1; border: 1px solid #eee; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-align: center; }
+.card-image-box { height: 160px; background: #f9f9f9; }
+.card-image-box img { width: 100%; height: 100%; object-fit: cover; }
+.card-text-box { padding: 20px; }
+.card-text-box h3 { color: #6D3D2F; font-size: 18px; margin-bottom: 10px; font-weight: 700; }
+.card-text-box p { color: #666; font-size: 13px; line-height: 1.5; }
+
+/* --- KEY FEATURES SECTION --- */
+.features-outer-container { padding: 60px 0; }
+.mandala-bg-box {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 20px;
+  text-align: center;
+  /* Background Pattern */
+  background-image: url('https://www.transparenttextures.com/patterns/mandala.png');
+  background-size: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.key-features-title {
+  font-family: 'Playfair Display', serif;
+  color: #8B2D3A;
+  font-size: 32px;
+  font-weight: 900;
+  margin-bottom: 50px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 300px);
+  justify-content: center;
+  gap: 30px;
+}
+
+.feature-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  border: 1px solid #eee;
+}
+
+.feature-img-box { height: 150px; background: #fafafa; }
+.feature-img-box img { width: 100%; height: 100%; object-fit: cover; }
+.feature-info { padding: 15px; }
+.feature-info h4 { color: #8B2D3A; margin-bottom: 5px; font-weight: 700; font-size: 18px; }
+.feature-info p { font-size: 13px; color: #666; }
+.mandala-bg-box {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 20px;
+  text-align: center;
+  
+  /* --- BOLD MANDALA BACKGROUND --- */
+  /* Maine ek naya dark mandala pattern dala hai jo visible hoga */
+  background-image: url('https://www.transparenttextures.com/patterns/az-subtle.png'), 
+                    radial-gradient(circle, rgba(242, 227, 202, 0.4) 0%, rgba(255, 255, 255, 1) 70%);
+  
+  background-color: #ffffff;
+  background-position: center;
+  border-radius: 50px; /* Thoda curved look ke liye */
+}
+
+
+
+.key-features-title {
+  font-family: 'Playfair Display', serif;
+  color: #8B2D3A;
+  font-size: 36px;
+  font-weight: 900;
+  margin-bottom: 60px;
+  position: relative;
+  z-index: 1; /* Text ko mandala ke upar rakhne ke liye */
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 320px);
+  justify-content: center;
+  gap: 40px;
+  position: relative;
+  z-index: 1; /* Cards ko mandala ke upar rakhne ke liye */
+}
+
+/* --- WHO THIS IS FOR SECTION --- */
+.audience-section {
+  padding: 80px 20px;
+  background-color: #f8fafc; /* Light bluish-grey background like the pic */
+  text-align: center;
+}
+
+.audience-header {
+  margin-bottom: 50px;
+}
+
+.audience-main-title {
+  font-family: 'Playfair Display', serif;
+  color: #8B2D3A; /* Maroon Title */
+  font-size: 36px;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.audience-subtitle {
+  color: #444;
+  font-size: 16px;
+  font-weight: 600;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.audience-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.audience-card {
+  flex: 1;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+}
+
+.audience-img-container {
+  width: 100%;
+  height: 200px; /* Fixed height for consistency */
+  background: #f1f5f9;
+}
+
+.audience-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.audience-content {
+  padding: 25px 20px;
+}
+
+.audience-content h3 {
+  color: #8B2D3A;
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.audience-content p {
+  color: #666;
+  font-size: 13px;
+  line-height: 1.6;
+  font-style: italic; /* Pic mein description thoda italicized/soft lag raha hai */
+}
+
+/* Responsive adjustment */
+@media (max-width: 768px) {
+  .audience-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+  .audience-card {
+    width: 100%;
+    max-width: 350px;
+  }
+}
+
+.mandala-fill-box {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 120px 20px; /* Padding badha di hai taaki box bada dikhe */
+  text-align: center;
+  border-radius: 25px;
+  
+  /* --- BACKGROUND SETTINGS --- */
+  background-size: cover;       /* Sabse zaroori: Isse image poora div fill karegi */
+  background-position: center;  /* Image center mein rahegi */
+  background-repeat: no-repeat;
+  
+  /* Watermark look ke liye white overlay */
+  background-color: rgba(255, 255, 255, 0.88); 
+  background-blend-mode: lighten;
+  
+  box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+  overflow: hidden;
+}
+
+.key-features-title {
+  font-family: 'Playfair Display', serif;
+  color: #8B2D3A;
+  font-size: 36px;
+  font-weight: 900;
+  margin-bottom: 50px;
+  position: relative;
+  z-index: 2; /* Image ke upar dikhane ke liye */
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  position: relative;
+  z-index: 2;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 350px); /* Fixed width for 2 columns */
+  justify-content: center;
+  gap: 40px;
+  position: relative;
+  z-index: 2;
+  margin-top: 40px;
+}
+
+.feature-card {
+  background: white;
+  min-height: 150px; /* Card ki height thodi badha di */
+  border-radius: 15px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+  border: 1px solid #eee;
+  padding: 20px;
+}
+.challenge-info-card {
+  flex: 1;
+  border: 2px solid #8B2D3A; 
+  border-radius: 15px;
+  overflow: hidden;
+  background: #fff;
+  transition: all 0.3s ease;
+}
+
+
+.feature-card {
+  background: white;
+  border-radius: 15px;
+  padding: 10px;
+  border: 1.5px solid #D4AF37; /* Gold border jo Indore ki shaan dikhaye */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.challenge-info-card, .feature-card, .audience-card {
+  border: 2px solid #D4AF37; /* Gold Border */
+  border-radius: 15px;
+  overflow: hidden;
+  background: #fff;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+
+/* --- SECTION 1: HERO --- */
+.hero-section {
+  background-color: #ffffff; /* Clean White */
+  padding-bottom: 80px;
+}
+
+/* --- SECTION 2: CHALLENGES --- */
+.challenges-section {
+  background-color: #FFF9F9; /* Very Light Maroon Tint */
+  padding: 80px 20px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+/* --- SECTION 3: KEY FEATURES --- */
+.features-outer-container {
+  background-color: #ffffff; /* White again for contrast */
+  padding: 80px 0;
+}
+
+
+
+/* --- SECTION 4: WHO THIS IS FOR --- */
+.audience-section {
+  background-color: #FDF7E7; /* Very Light Gold/Beige Tint */
+  padding: 80px 20px;
+  border-top: 1px solid #F2E3CA;
+}
