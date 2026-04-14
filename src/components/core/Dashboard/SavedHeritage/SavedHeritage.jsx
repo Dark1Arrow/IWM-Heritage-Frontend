@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { HiOutlineLocationMarker, HiOutlineClock, HiBookmark } from "react-icons/hi";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getSavedHeritage, toggleSaveHeritage } from "../../../../redux/api/operation/saved";
 
@@ -83,8 +83,9 @@ const SavedHeritage = () => {
             if (!place) return null;
 
             return (
+              <Link key={item._id} to={`/heritage-details/${item.heritageId._id}`}>
+                
               <div
-                key={item._id}
                 className="group bg-[#FDF8F1] border border-[#E8E8E8] rounded-3xl p-6 flex flex-col md:flex-row gap-8 shadow-sm hover:shadow-md transition-all relative"
               >
                 {/* Bookmark Button - Floated Right */}
@@ -147,6 +148,7 @@ const SavedHeritage = () => {
                   </div>
                 </div>
               </div>
+              </Link>
             );
           })}
         </div>

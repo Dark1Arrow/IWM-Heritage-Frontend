@@ -52,7 +52,7 @@ const router = createBrowserRouter([
         element: <About />
       },
       {
-        path: "/heritage-details",
+        path: "/heritage-details/:heritageId",
         element: <HeritageDetails />
       },
       {

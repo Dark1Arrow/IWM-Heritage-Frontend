@@ -21,6 +21,7 @@ export default function AddHeritage() {
   // --- Dynamic Array States ---
   const [timeline, setTimeline] = useState([{ year: "", description: "" }])
   const [significancePoints, setSignificancePoints] = useState([""])
+  const [storyPoints, setStoryPoints] = useState([""])
   const [archInfluences, setArchInfluences] = useState([{ style: "", details: "" }])
 
   // --- Handlers ---
@@ -29,6 +30,9 @@ export default function AddHeritage() {
 
   const addSignificance = () => setSignificancePoints([...significancePoints, ""])
   const removeSignificance = (index) => setSignificancePoints(significancePoints.filter((_, i) => i !== index))
+
+  const addStory = () => setStoryPoints([...storyPoints, ""])
+  const removeStory = (index) => setStoryPoints(storyPoints.filter((_, i) => i !== index))
 
   const addInfluence = () => setArchInfluences([...archInfluences, { style: "", details: "" }])
   const removeInfluence = (index) => setArchInfluences(archInfluences.filter((_, i) => i !== index))
@@ -62,6 +66,7 @@ export default function AddHeritage() {
               street: data.location?.address?.street,
               archDesc: data.architecture?.description,
               significanceDesc: data.significance?.description,
+              storyDesc: data.story?.description,
               openingHours: data.visitInfo?.openingHours,
               days: data.visitInfo?.days,
               indianFee: data.visitInfo?.entryFees?.indian,
@@ -81,6 +86,7 @@ export default function AddHeritage() {
             // 2. Update Dynamic States
             if (data.timeline) setTimeline(data.timeline);
             if (data.significance?.points) setSignificancePoints(data.significance.points);
+            if (data.story?.points) setStoryPoints(data.story.points);
             if (data.architecture?.influences) setArchInfluences(data.architecture.influences);
 
             // Inside your onSubmit function:
@@ -165,6 +171,10 @@ export default function AddHeritage() {
       formData.append("significance", JSON.stringify({
         description: data.significanceDesc,
         points: significancePoints.filter(p => p.trim() !== "")
+      }));
+      formData.append("story", JSON.stringify({
+        description: data.story,
+        points:storyPoints.filter(p => p.trim() !== "")
       }));
 
       formData.append("visitInfo", JSON.stringify({
@@ -339,9 +349,26 @@ export default function AddHeritage() {
           </div>
         </div>
 
+        <div className="rounded-md border border-[#f5e6d3] p-6 space-y-4">
+          <div className="flex justify-between items-center">
+            <p className="text-xl font-semibold text-black">7. Story</p>
+            <button type="button" onClick={addStory} className="flex items-center gap-1 text-black underline text-sm"><MdOutlineAddCircle /> Add Point</button>
+          </div>
+
+          <textarea className="w-full min-h-[100px] form-style" {...register("storyDesc")} placeholder="Broad story description..." />
+          <div className="grid grid-cols-1 gap-2">
+            {storyPoints.map((point, index) => (
+              <div key={index} className="flex gap-2">
+                <input className="form-style flex-1" placeholder="Key Point" value={point} onChange={(e) => { const n = [...storyPoints]; n[index] = e.target.value; setStoryPoints(n); }} />
+                <button type="button" onClick={() => removeStory(index)} className="text-[#862127]"><MdDeleteOutline size={24} /></button>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* SECTION 7: VISITOR INFO */}
         <div className="rounded-md border border-[#f5e6d3] p-6 space-y-4">
-          <p className="text-xl font-semibold text-black">7. Visitor & Facility Details</p>
+          <p className="text-xl font-semibold text-black">8. Visitor & Facility Details</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <input className="form-style" {...register("openingHours")} placeholder="Opening Hours (e.g. 10 AM - 6 PM)" />
             <input className="form-style" {...register("days")} placeholder="Open Days (e.g. Tue - Sun)" />
@@ -376,7 +403,7 @@ export default function AddHeritage() {
 
         {/* SECTION 8: GALLERY & CONTACT */}
         <div className="rounded-md border border-[#f5e6d3] p-6 space-y-4">
-          <p className="text-xl font-semibold text-black">8. Gallery & Final Details</p>
+          <p className="text-xl font-semibold text-black">9. Gallery & Final Details</p>
           <MultiUpload name="galleryImages" // Must match the key in your reset() object exactly
             label="Upload Multiple Images"
             register={register}
