@@ -303,7 +303,8 @@ const HeritageDetails = () => {
                 )}
             </div>
         </section>
-        <ReviewsSection/>
+        {console.log(heritage._id)}
+        <ReviewsSection heritageId={heritage._id} />
       </div>
     </div>
   );

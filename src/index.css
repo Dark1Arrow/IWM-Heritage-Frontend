@@ -1,4 +1,5 @@
 @import "tailwindcss";
+/* @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@400;600;700&display=swap'); */
 
 body{
   color: #3E2723;
@@ -309,8 +310,7 @@ body{
 .card-text-box { padding: 20px; text-align: center; }
 .card-text-box h3 { color: #6D3D2F; font-size: 18px; margin-bottom: 10px; }
 .card-text-box p { color: #666; font-size: 13px; line-height: 1.5; }
-/* --- Global Font Import (Zaruri hai serif look ke liye) --- */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@400;600;700&display=swap');
+/* --- Global Font Import (Zaruri hai serif look ke liye) --- *
 
 /* --- About Page Title (Sabse upar wala) --- */
 .page-title {
@@ -350,7 +350,6 @@ body{
   font-weight: 600;
   color: #444;
 }
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@400;600;700&display=swap');
 
 .about-page-wrapper {
   background-color: #fff;

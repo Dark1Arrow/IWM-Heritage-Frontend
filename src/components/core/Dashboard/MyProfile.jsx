@@ -26,7 +26,7 @@ const MyProfile = () => {
 
       {/* Section 1: Top Profile Header */}
       <div className="flex flex-col sm:flex-row items-center sm:items- justify-between rounded-2xl border border-[#E8E8E8] bg-[#FFF9F3] p-8 px-3 sm:px-12 shadow-sm gap-y-6">
-        <div className="flex flex-col sm:flex-row justify-center items-center gap-x-6">
+        <div className="flex flex-col  sm:flex-row justify-center items-center gap-x-6">
           <Img
             src={user?.image}
             alt={`profile-${user?.firstName}`}
