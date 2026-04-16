@@ -135,8 +135,8 @@ const Home = () => {
         <div className="max-w-5xl mx-auto text-center px-6">
           <h2 className="text-3xl sm:text-4xl font-bold text-[#8B3A3A] mb-4">Uncover Indore</h2>
           <p className="text-gray-600 mb-8 sm:mb-10 text-base sm:text-lg">Dive into Indore’s famous food culture with Sarafa Bazaar.</p>
-          <div className="w-full relative h-[350px] sm:h-[500px] rounded-[1.5rem] sm:rounded-[2.5rem] border-2 border-[#E5DFD5]">
-            <img src="/map.svg" className="absolute inset-0 w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"/>
+          <div className="w-full relative h-[350px] sm:h-[500px] rounded-[1.5rem] sm:rounded-[2.5rem] border-2 border-[#E5DFD5] ">
+            {/* <img src="/map.svg" className="absolute inset-0 w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"/> */}
           </div>
         </div>
       </section>

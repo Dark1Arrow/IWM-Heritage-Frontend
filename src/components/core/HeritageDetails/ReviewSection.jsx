@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Star, Heart, MessageSquare, Plus, Info, Trash2 } from "lucide-react";
-import { getSiteReviews, getReviewStats, toggleLikeReview } from "../../../redux/api/operation/review"; // Adjust path
+import { getSiteReviews, getReviewStats, toggleLikeReview, deleteReview } from "../../../redux/api/operation/review"; // Adjust path
 import toast from "react-hot-toast";
 import AddReview from "./AddReview"
 
@@ -30,7 +30,7 @@ const ReviewsSection = ({ heritageId }) => {
 
   useEffect(() => {
     fetchReviewData();
-  }, [heritageId]);
+  }, [heritageId,addReview]);
 
   const handleLike = async (reviewId) => {
     if (!token) return toast.error("Please login to like reviews");
@@ -39,13 +39,26 @@ const ReviewsSection = ({ heritageId }) => {
       // Optimistic UI update or re-fetch
       setReviews(prev => prev.map(r => r._id === reviewId ? { ...r, likes: updated.likes } : r));
     }
+     fetchReviewData()
   };
+
+  const handleDelete = async (reviewId) => {
+    if (!token) return toast.error("Please login to like reviews");
+    const updated = await dispatch(deleteReview(reviewId, token));
+    if (updated) {
+      // Optimistic UI update or re-fetch
+      setReviews(prev => prev.map(r => r._id === reviewId ? { ...r, likes: updated.likes } : r));
+    }
+    fetchReviewData()
+  }
 
   if (loading) return <div className="py-10 text-center text-gray-500">Loading reviews...</div>;
 
   return (
     <div className="max-w-7xl mx-auto px-4 md:px-12 py-16 bg-white">
-      <div className="flex flex-col md:flex-row gap-12 items-start mb-16">
+      {
+        reviews.length > 0 ? (
+          <div className="flex flex-col md:flex-row gap-12 items-start mb-16">
 
         {/* LEFT: RATING SUMMARY */}
         <div className="w-full md:w-1/2">
@@ -100,6 +113,10 @@ const ReviewsSection = ({ heritageId }) => {
           </div>
         </div>
       </div>
+        ):(
+          <></>
+        )
+      }
 
       <hr className="border-gray-100 mb-12" />
 
