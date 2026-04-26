@@ -9,7 +9,8 @@ const MapCards = ({ sites }) => {
         <>
             {sites.map((site, index) => {
                 // Determine the correct coordinate field (backend might use position or location)
-                const pos = site.location.coordinates || site.location;
+                console.log("hey there this is lat & log",site.location)
+                const pos = site.location || site.location;
                 if (!pos || !Array.isArray(pos) || pos.length < 2) return null;
                 return (
                     <Marker

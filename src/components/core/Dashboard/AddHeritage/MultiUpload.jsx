@@ -134,7 +134,7 @@ const MultiUpload = ({ name, setValue, register, label, viewData = [], errors })
             </div>
 
             {errors?.[name] && (
-                <span className="ml-2 text-xs text-pink-200">
+                <span className="ml-2 text-xs text-[#DD435D]">
                     At least one {label} is required
                 </span>
             )}

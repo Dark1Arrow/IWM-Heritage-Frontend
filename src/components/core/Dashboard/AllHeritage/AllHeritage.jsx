@@ -66,17 +66,19 @@ const AllHeritage = () => {
         /* Cards Container */
         <div className="space-y-8">
           {places.map((place) => (
-            <Link key={place._id} to={`/heritage-details/${place._id}`}>
+            
               <div
-                className="bg-[#FDF8F1] border border-[#E8E8E8] rounded-3xl p-6 flex flex-col md:flex-row gap-8 shadow-sm"
+                className="bg-[#FDF8F1] border border-[#E8E8E8] mb-10 rounded-3xl p-6 flex flex-col md:flex-row gap-8 shadow-sm"
               >
                 {/* Image Section */}
                 <div className="w-full md:w-1/3">
+                <Link  key={place._id} to={`/heritage-details/${place._id}`}>
                   <img
                     src={place.mainImage}
                     alt={place.name}
                     className="w-full h-64 object-cover rounded-2xl shadow-md"
                   />
+                  </Link>
                 </div>
 
                 {/* Content Section */}
@@ -140,7 +142,6 @@ const AllHeritage = () => {
                   </div>
                 </div>
               </div>
-            </Link>
           ))}
         </div>
       )}

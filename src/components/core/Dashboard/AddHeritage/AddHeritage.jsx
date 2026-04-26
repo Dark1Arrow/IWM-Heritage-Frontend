@@ -251,20 +251,35 @@ export default function AddHeritage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="flex flex-col gap-2">
-              <label className="text-[14px] text-black">Site Name <sup className="text-[#862127]">*</sup></label>
+              <label className="text-[14px] text-black">Site Name <sup className="text-[#DD435D]">*</sup></label>
               <input className="form-style" {...register("name", { required: true })} placeholder="Rajwada Palace" />
+              {errors.name && (
+                        <span className="ml-2 text-xs tracking-wide text-[#DD435D]">
+                            Heritage name is required
+                        </span>
+               )}
             </div>
             <div className="flex flex-col gap-2">
-              <label className="text-[14px] text-black">Era <sup className="text-[#862127]">*</sup></label>
+              <label className="text-[14px] text-black">Era <sup className="text-[#DD435D]">*</sup></label>
               <input className="form-style" {...register("era", { required: true })} placeholder="e.g. 18th Century" />
+              {errors.era && (
+                        <span className="ml-2 text-xs tracking-wide text-[#DD435D]">
+                            Heritage Era is required
+                        </span>
+               )}
             </div>
             <div className="flex flex-col gap-2">
-              <label className="text-[14px] text-black">Type <sup className="text-[#862127]">*</sup></label>
+              <label className="text-[14px] text-black">Type <sup className="text-[#DD435D]">*</sup></label>
               <select className="form-style" {...register("heritageType", { required: true })}>
                 {['Architectural', 'Religious', 'Commercial', 'Natural', 'Memorial', 'Museums', 'Food', 'Markets'].map(t => (
                   <option key={t} value={t}>{t}</option>
                 ))}
               </select>
+              {errors.heritageType && (
+                        <span className="ml-2 text-xs tracking-wide text-[#DD435D]">
+                            Heritage Type is required
+                        </span>
+               )}
             </div>
           </div>
         </div>
@@ -281,8 +296,13 @@ export default function AddHeritage() {
             <input className="form-style" {...register("aboutTitle")} placeholder="e.g. A Royal Residence" />
           </div>
           <div className="flex flex-col gap-2">
-            <label className="text-[14px] text-black">Detailed Content <sup className="text-[#862127]">*</sup></label>
+            <label className="text-[14px] text-black">Detailed Content <sup className="text-[#DD435D]">*</sup></label>
             <textarea className="form-style min-h-[120px]" {...register("aboutContent", { required: true })} placeholder="Describe the history..." />
+            {errors.aboutContent && (
+                        <span className="ml-2 text-xs tracking-wide text-[#DD435D]">
+                            Heritage about content is required
+                        </span>
+               )}
           </div>
         </div>
 
@@ -290,8 +310,13 @@ export default function AddHeritage() {
         <div className="rounded-md border border-[#f5e6d3] p-6 space-y-4">
           <p className="text-xl font-semibold text-black">3. Location (Coordinates)</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <input className="form-style" {...register("lng", { required: true })} placeholder="Longitude (e.g. 75.85)" />
-            <input className="form-style" {...register("lat", { required: true })} placeholder="Latitude (e.g. 22.71)" />
+            <input className="form-style" type="number" {...register("lng", { required: true })} placeholder="Longitude (e.g. 75.85)" />
+            <input className="form-style" type="number" {...register("lat", { required: true })} placeholder="Latitude (e.g. 22.71)" />
+            {errors.lng && errors.lat  && (
+                        <span className="ml-2 text-xs tracking-wide text-[#DD435D]">
+                            Heritage cordinates is required
+                        </span>
+               )}
           </div>
           <input className="form-style w-full" {...register("street")} placeholder="Street Address / Area" />
         </div>
@@ -310,7 +335,7 @@ export default function AddHeritage() {
               <input className="form-style flex-1" placeholder="Event Description" onChange={(e) => {
                 const n = [...timeline]; n[index].description = e.target.value; setTimeline(n);
               }} />
-              <button type="button" onClick={() => removeTimeline(index)} className="text-[#862127] hover:text-pink-50 transition-all"><MdDeleteOutline size={24} /></button>
+              <button type="button" onClick={() => removeTimeline(index)} className="text-[#DD435D] hover:text-pink-50 transition-all"><MdDeleteOutline size={24} /></button>
             </div>
           ))}
         </div>
@@ -326,7 +351,7 @@ export default function AddHeritage() {
             <div key={index} className="flex flex-col sm:flex-row gap-4 sm:items-center bg-richblack-700 p-3 rounded-md">
               <input className="form-style sm:w-[30%]" placeholder="Style (e.g. Maratha)" onChange={(e) => { const n = [...archInfluences]; n[index].style = e.target.value; setArchInfluences(n); }} />
               <input className="form-style flex-1" placeholder="Specific Details" onChange={(e) => { const n = [...archInfluences]; n[index].details = e.target.value; setArchInfluences(n); }} />
-              <button type="button" onClick={() => removeInfluence(index)} className="text-[#862127]"><MdDeleteOutline size={24} /></button>
+              <button type="button" onClick={() => removeInfluence(index)} className="text-[#DD435D]"><MdDeleteOutline size={24} /></button>
             </div>
           ))}
           <Upload name="archFooterImage" label="Architecture Footer Image" register={register} setValue={setValue} viewData={isEdit ? watch("archFooterImage") : null} editData={isEdit} />
@@ -343,7 +368,7 @@ export default function AddHeritage() {
             {significancePoints.map((point, index) => (
               <div key={index} className="flex gap-2">
                 <input className="form-style flex-1" placeholder="Key Point" value={point} onChange={(e) => { const n = [...significancePoints]; n[index] = e.target.value; setSignificancePoints(n); }} />
-                <button type="button" onClick={() => removeSignificance(index)} className="text-[#862127]"><MdDeleteOutline size={24} /></button>
+                <button type="button" onClick={() => removeSignificance(index)} className="text-[#DD435D]"><MdDeleteOutline size={24} /></button>
               </div>
             ))}
           </div>
@@ -360,7 +385,7 @@ export default function AddHeritage() {
             {storyPoints.map((point, index) => (
               <div key={index} className="flex gap-2">
                 <input className="form-style flex-1" placeholder="Key Point" value={point} onChange={(e) => { const n = [...storyPoints]; n[index] = e.target.value; setStoryPoints(n); }} />
-                <button type="button" onClick={() => removeStory(index)} className="text-[#862127]"><MdDeleteOutline size={24} /></button>
+                <button type="button" onClick={() => removeStory(index)} className="text-[#DD435D]"><MdDeleteOutline size={24} /></button>
               </div>
             ))}
           </div>

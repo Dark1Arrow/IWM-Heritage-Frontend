@@ -114,7 +114,7 @@ const Upload = ({ name, setValue, register, label, errors, video = false, viewDa
                 )}
             </div>
             {errors?.[name] && (
-                <span className="ml-2 text-xs tracking-wide text-pink-200">
+                <span className="ml-2 text-xs tracking-wide text-[#DD435D]">
                     {label} is required
                 </span>
             )}
