@@ -7,7 +7,8 @@ import AddReview from "./AddReview"
 
 const ReviewsSection = ({ heritageId }) => {
   const dispatch = useDispatch();
-  const { token } = useSelector((state) => state.auth); // Assuming auth state
+  const { token } = useSelector((state) => state.auth); 
+  const {user} = useSelector((state) => state.profile)// Assuming auth state
 
   const [reviews, setReviews] = useState([]);
   const [stats, setStats] = useState(null);
@@ -19,10 +20,10 @@ const ReviewsSection = ({ heritageId }) => {
   const fetchReviewData = async () => {
     setLoading(true);
     const [reviewsRes, statsRes] = await Promise.all([
-      dispatch(getSiteReviews(heritageId)),
+      dispatch(getSiteReviews(user,heritageId)),
       dispatch(getReviewStats(heritageId))
     ]);
-    console.log("reviews: ", reviewsRes, "statsRes: ", statsRes)
+    // console.log("reviews: ", reviewsRes, "statsRes: ", statsRes)
     if (reviewsRes) setReviews(reviewsRes);
     if (statsRes) setStats(statsRes);
     setLoading(false);

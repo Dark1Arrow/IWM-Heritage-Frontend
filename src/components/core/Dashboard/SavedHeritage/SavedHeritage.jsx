@@ -86,7 +86,7 @@ const SavedHeritage = () => {
               <Link key={item._id} to={`/heritage-details/${item.heritageId._id}`}>
                 
               <div
-                className="group bg-[#FDF8F1] border border-[#E8E8E8] rounded-3xl p-6 flex flex-col md:flex-row gap-8 shadow-sm hover:shadow-md transition-all relative"
+                className="group bg-[#FDF8F1] border border-[#E8E8E8] mb-10 rounded-3xl p-6 flex flex-col md:flex-row gap-8 shadow-sm hover:shadow-md transition-all relative"
               >
                 {/* Bookmark Button - Floated Right */}
                 <button

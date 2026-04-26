@@ -1,6 +1,7 @@
 import { toast } from "react-hot-toast"
 import { apiConnector } from "../apiConnector"
 import { reviewHeritageEndpints } from "../api.js"
+import { useSelector } from "react-redux";
 
 const {
     CREATE_HERITAGE_REVIEW_API,
@@ -11,22 +12,38 @@ const {
 } = reviewHeritageEndpints
 
 // 1. GET ALL REVIEWS FOR A SITE (Matches: GET /:heritageId)
-export const getSiteReviews = (heritageId) => {
-    return async (dispatch) => {
-        let result = []
+export const getSiteReviews = (user,heritageId) => {
+    return async (dispatch, getState) => { // Added getState to access the current user
+        let result = [];
         try {
             const response = await apiConnector(
                 "GET",
                 `${GET_HERITAGE_REVIEW_API}/${heritageId}`
-            )
-            if (!response?.data?.success) throw new Error(response.data.message)
-            result = response?.data?.data
+            );
+
+            if (!response?.data?.success) throw new Error(response.data.message);
+
+            const rawReviews = response?.data?.data || [];
+            
+            // Get user from your auth state (adjust 'auth' to match your store slice name)
+            // const {user} = useSelector((state) => state.profile); 
+            // console.log(user)
+            const currentUserId = user?._id;
+
+            // Process data on the frontend
+            result = rawReviews.map(review => ({
+                ...review,
+                // If user is logged in, check if their ID exists in the likes array
+                isLiked: currentUserId ? review.likes.includes(currentUserId) : false,
+                likeCount: review.likes?.length || 0
+            }));
+
         } catch (error) {
-            console.log("GET_SITE_REVIEWS_ERROR............", error)
+            console.log("GET_SITE_REVIEWS_ERROR............", error);
         }
-        return result
+        return result;
     }
-}
+};
 
 // 2. CREATE A REVIEW (Matches: POST /)
 export const createReview = (data, token) => {

@@ -51,6 +51,7 @@ export default function AddHeritage() {
 
           if (data) {
             // 1. Reset standard form fields
+            console.log("corditaes-----------",data.location.coordinates)
             reset({
               name: data.name,
               mainImage: data.mainImage,
@@ -61,8 +62,8 @@ export default function AddHeritage() {
               heritageType: data.heritageType,
               aboutTitle: data.about?.title,
               aboutContent: data.about?.content,
-              lng: data.location?.coordinates,
-              lat: data.location?.coordinates,
+              lng: data.location?.coordinates[0],
+              lat: data.location?.coordinates[1],
               street: data.location?.address?.street,
               archDesc: data.architecture?.description,
               significanceDesc: data.significance?.description,
@@ -85,6 +86,8 @@ export default function AddHeritage() {
 
             // 2. Update Dynamic States
             if (data.timeline) setTimeline(data.timeline);
+            console.log(data.timeline)
+            console.log(timeline)
             if (data.significance?.points) setSignificancePoints(data.significance.points);
             if (data.story?.points) setStoryPoints(data.story.points);
             if (data.architecture?.influences) setArchInfluences(data.architecture.influences);
@@ -154,8 +157,10 @@ export default function AddHeritage() {
         content: data.aboutContent
       }));
 
+      
+
       formData.append("location", JSON.stringify({
-        coordinates: [Number(data.lng), Number(data.lat)],
+        coordinates: [data.lat, data.lng],
         address: { street: data.street, city: "Indore", state: "Madhya Pradesh" }
       }));
 
@@ -172,8 +177,9 @@ export default function AddHeritage() {
         description: data.significanceDesc,
         points: significancePoints.filter(p => p.trim() !== "")
       }));
+
       formData.append("story", JSON.stringify({
-        description: data.story,
+        description: data.storyDesc,
         points:storyPoints.filter(p => p.trim() !== "")
       }));
 
@@ -329,10 +335,10 @@ export default function AddHeritage() {
           </div>
           {timeline.map((item, index) => (
             <div key={index} className="flex flex-col sm:flex-row gap-4 sm:items-center">
-              <input className="form-style sm:w-[120px]" placeholder="Year" onChange={(e) => {
+              <input className="form-style sm:w-[120px]" value={item.year || ""} placeholder="Year" onChange={(e) => {
                 const n = [...timeline]; n[index].year = e.target.value; setTimeline(n);
               }} />
-              <input className="form-style flex-1" placeholder="Event Description" onChange={(e) => {
+              <input className="form-style flex-1" value={item.description || ""} placeholder="Event Description" onChange={(e) => {
                 const n = [...timeline]; n[index].description = e.target.value; setTimeline(n);
               }} />
               <button type="button" onClick={() => removeTimeline(index)} className="text-[#DD435D] hover:text-pink-50 transition-all"><MdDeleteOutline size={24} /></button>
@@ -349,8 +355,10 @@ export default function AddHeritage() {
           <textarea className="form-style w-full min-h-[100px]" {...register("archDesc")} placeholder="Overall Architectural description..." />
           {archInfluences.map((inf, index) => (
             <div key={index} className="flex flex-col sm:flex-row gap-4 sm:items-center bg-richblack-700 p-3 rounded-md">
-              <input className="form-style sm:w-[30%]" placeholder="Style (e.g. Maratha)" onChange={(e) => { const n = [...archInfluences]; n[index].style = e.target.value; setArchInfluences(n); }} />
-              <input className="form-style flex-1" placeholder="Specific Details" onChange={(e) => { const n = [...archInfluences]; n[index].details = e.target.value; setArchInfluences(n); }} />
+            {console.log("hsjt",inf)}
+
+              <input className="form-style sm:w-[30%]" value={inf.style || ""} placeholder="Style (e.g. Maratha)" onChange={(e) => { const n = [...archInfluences]; n[index].style = e.target.value; setArchInfluences(n); }} />
+              <input className="form-style flex-1" value={inf.details} placeholder="Specific Details" onChange={(e) => { const n = [...archInfluences]; n[index].details = e.target.value; setArchInfluences(n); }} />
               <button type="button" onClick={() => removeInfluence(index)} className="text-[#DD435D]"><MdDeleteOutline size={24} /></button>
             </div>
           ))}

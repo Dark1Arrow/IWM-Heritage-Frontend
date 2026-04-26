@@ -103,7 +103,7 @@ const deleteHeritage = (heritageId, token) => {
 };
 
 // GET Heritage Details by ID
-const getHeritageDetails = (heritageId) => {
+const getHeritageDetails = (heritageId,savedList) => {
   return async (dispatch) => {
     let result = null;
     try {
@@ -118,6 +118,13 @@ const getHeritageDetails = (heritageId) => {
       }
       
       result = response?.data?.data;
+      result = {
+        ...result,
+        isSaved: savedList.some(
+          (saved) => saved.heritageId._id.toString() === result._id.toString()
+        ),
+      };
+      console.log("saved" , savedList)
     } catch (error) {
       console.log("GET_HERITAGE_DETAILS_API ERROR............", error);
       // Optional: toast.error("Could not fetch heritage details");
