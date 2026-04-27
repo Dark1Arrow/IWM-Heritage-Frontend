@@ -120,7 +120,7 @@ const HeritageMap = () => {
             opacity: 1
           })}
         />
-
+        {console.log("filteredSites", filteredSites)}
         <MapCards sites={filteredSites} />
       </MapContainer >
     </div>

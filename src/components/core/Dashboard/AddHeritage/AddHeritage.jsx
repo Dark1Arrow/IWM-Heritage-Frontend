@@ -62,8 +62,8 @@ export default function AddHeritage() {
               heritageType: data.heritageType,
               aboutTitle: data.about?.title,
               aboutContent: data.about?.content,
-              lng: data.location?.coordinates[0],
-              lat: data.location?.coordinates[1],
+              lat: data.location?.coordinates[0],
+              lng: data.location?.coordinates[1],
               street: data.location?.address?.street,
               archDesc: data.architecture?.description,
               significanceDesc: data.significance?.description,
@@ -316,8 +316,8 @@ export default function AddHeritage() {
         <div className="rounded-md border border-[#f5e6d3] p-6 space-y-4">
           <p className="text-xl font-semibold text-black">3. Location (Coordinates)</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <input className="form-style" type="number" {...register("lng", { required: true })} placeholder="Longitude (e.g. 75.85)" />
-            <input className="form-style" type="number" {...register("lat", { required: true })} placeholder="Latitude (e.g. 22.71)" />
+            <input className="form-style" type="number" step="any" {...register("lat", { required: true })} placeholder="Latitude (e.g. 75.85)" />
+            <input className="form-style" type="number" step="any" {...register("lng", { required: true })} placeholder="Longitude (e.g. 22.71)" />
             {errors.lng && errors.lat  && (
                         <span className="ml-2 text-xs tracking-wide text-[#DD435D]">
                             Heritage cordinates is required
@@ -355,7 +355,6 @@ export default function AddHeritage() {
           <textarea className="form-style w-full min-h-[100px]" {...register("archDesc")} placeholder="Overall Architectural description..." />
           {archInfluences.map((inf, index) => (
             <div key={index} className="flex flex-col sm:flex-row gap-4 sm:items-center bg-richblack-700 p-3 rounded-md">
-            {console.log("hsjt",inf)}
 
               <input className="form-style sm:w-[30%]" value={inf.style || ""} placeholder="Style (e.g. Maratha)" onChange={(e) => { const n = [...archInfluences]; n[index].style = e.target.value; setArchInfluences(n); }} />
               <input className="form-style flex-1" value={inf.details} placeholder="Specific Details" onChange={(e) => { const n = [...archInfluences]; n[index].details = e.target.value; setArchInfluences(n); }} />
