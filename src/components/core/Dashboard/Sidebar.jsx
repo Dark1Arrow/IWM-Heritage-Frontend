@@ -9,7 +9,7 @@ import SidebarLinks from './SidebarLinks'
 import { sidebarLinks,navbarLinks } from '../../../../data/dashboardLinks.js'
 import { VscSignOut } from 'react-icons/vsc'
 import ConformationModel from '../../common/ConformationModel.jsx'
-import { logout } from '../../../redux/api/operation/authAPI.js'
+import { logout } from '../../../redux/api/operation/authApi.js'
 
 const Sidebar = () => {
     const dispatch = useDispatch()
