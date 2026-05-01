@@ -5,6 +5,7 @@ web_archiver/
 public/India-360-v2.mp4
 # Build outputs
 dist/
+
 build/
 .next/
 out/
