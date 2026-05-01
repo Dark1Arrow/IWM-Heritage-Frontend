@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useLocation, useNavigate } from "react-router-dom"
-import { resetPassword } from "../redux/api/operation/authAPI"
+import { resetPassword } from "../redux/api/operation/authApi"
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai"
 import { Link } from "react-router-dom"
 import { BiArrowBack } from "react-icons/bi"

@@ -6,7 +6,7 @@ import OTPInput from 'react-otp-input'
 import { Link } from 'react-router-dom'
 import { BiArrowBack } from "react-icons/bi";
 import { RxCountdownTimer } from "react-icons/rx"
-import { sendOTP, signUp } from '../redux/api/operation/authAPI'
+import { sendOTP, signUp } from '../redux/api/operation/authApi'
 
 const Verifyemail = () => {
     const [otp, setOtp] = useState("")

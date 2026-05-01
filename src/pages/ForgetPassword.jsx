@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getPasswordToken } from '../redux/api/operation/authAPI'
+import { getPasswordToken } from '../redux/api/operation/authApi'
 import { BiArrowBack } from "react-icons/bi"
 import { Link } from 'react-router-dom'
 
