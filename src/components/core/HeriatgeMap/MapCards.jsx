@@ -18,7 +18,7 @@ const MapCards = ({ sites }) => {
                     pos = site.location.coordinates;
                 }
 
-                console.log("pos", pos)
+                // console.log("pos", pos)
                 
                 if (!pos || !Array.isArray(pos) || pos.length < 2) return null;
                 return (
@@ -29,7 +29,7 @@ const MapCards = ({ sites }) => {
                         <Popup className="custom-popup">
                             <Link to={`/heritage-details/${site._id}`}>
                                 <div className="w-64 overflow-hidden rounded-lg">
-                                    {console.log(site)}
+                                    {/* {console.log(site)} */}
                                     <img
                                         src={site.mainImage || "/gandhi-hall.jpg"}
                                         alt={site.name}

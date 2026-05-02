@@ -86,7 +86,7 @@ const HeritageDetails = () => {
 
         {/* --- TOP RIGHT: Saved Button --- */}
         <div className="absolute top-6 right-6 md:top-10 md:right-12 z-10">
-          {console.log(heritage)}
+          {/* {console.log(heritage)} */}
           <button
             onClick={() => handleToggleSave(heritage?._id)}
             className={`group flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 border ${heritage?.isSaved
@@ -345,7 +345,7 @@ const HeritageDetails = () => {
             )}
           </div>
         </section>
-        {console.log(heritage._id)}
+        {/* {console.log(heritage._id)} */}
         <ReviewsSection heritageId={heritage._id} />
       </div>
     </div>

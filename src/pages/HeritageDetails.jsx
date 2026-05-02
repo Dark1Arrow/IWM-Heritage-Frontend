@@ -1,11 +1,8 @@
 import React, { useEffect } from 'react'
 import HeritageDetail from '../components/core/HeritageDetails/HeritageDetails'
 
-useEffect(() => {
-  console.log("ENV: ", import.meta.env.VITE_API_URL) 
-},[])
-
 const HeritageDetails = () => {
+
   return (
     <div>
       <HeritageDetail/>
