@@ -1,6 +1,7 @@
 import { useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Link, useNavigate } from "react-router-dom"
+import { matchPath } from "react-router-dom"
 
 import useOnClickOutside from "../../../hooks/useOnOneClick"
 import Img from './../../common/Img';
@@ -24,6 +25,10 @@ export default function MobileProfileDropDown() {
 
     useOnClickOutside(ref, () => setOpen(false))
 
+    const matchRoute = (route) => {
+        return matchPath({ path: route }, location.pathname)
+    }
+
     return (
         <button className="relative sm:hidden outline-none" onClick={() => setOpen(!open)}>
             <div className="flex items-center gap-x-1">
@@ -33,7 +38,7 @@ export default function MobileProfileDropDown() {
                     // Added a Gold border for the Heritage look
                     className={'aspect-square w-[35px] rounded-full object-cover border-2 border-amber-600'}
                 />
-                <AiOutlineCaretDown className={`text-sm text-amber-700 transition-transform duration-200 ${open ? "rotate-180" : "rotate-0"}`} />
+                <AiOutlineCaretDown className={`text-sm text-white transition-transform duration-200 ${open ? "rotate-180" : "rotate-0"}`} />
             </div>
 
             {open && (
@@ -41,7 +46,7 @@ export default function MobileProfileDropDown() {
                     onClick={(e) => e.stopPropagation()}
                     ref={ref}
                     // Styling: Cream background, Maroon/Gold borders, Serif-like feel
-                    className="absolute min-w-[200px] top-[135%] right-0 z-[50] overflow-hidden rounded-md border-2 border-amber-800 bg-[#fdfaf1] shadow-[5px_5px_15px_rgba(0,0,0,0.3)] animate-in fade-in zoom-in duration-200"
+                    className="absolute min-w-[200px] top-[135%] right-0 z-[50] overflow-hidden rounded-md border-2 border-[#95846a] bg-[#fdfaf1] shadow-[5px_5px_15px_rgba(0,0,0,0.3)] animate-in fade-in zoom-in duration-200"
                 >
                     {/* User Info Header - Heritage Gold/Maroon mix */}
                     <div className="px-4 py-3 border-b border-amber-800/30 bg-amber-100/50">
@@ -53,14 +58,22 @@ export default function MobileProfileDropDown() {
 
                     <div className="flex flex-col py-1">
                         <Link to="/dashboard/my-profile" onClick={() => setOpen(false)}
-                            className="flex w-full items-center gap-x-2 py-3 px-4 text-sm text-stone-800 hover:bg-amber-800 hover:text-white transition-all">
-                            <VscDashboard className="text-lg text-amber-700" />
+                            className={`flex w-full items-center gap-x-2 py-3 px-4 text-sm hover:bg-amber-800 hover:text-whit transition-all 
+                                ${matchRoute("/dashboard/my-profile")
+                                    ? "bg-[#5C3317] text-[#FFF9F3]" // Deep brown background, Cream text
+                                    : "text-[#5C3317] hover:bg-[#F2E8DA]" // Deep brown text, light beige hover
+                                } `}>
+                            <VscDashboard className="text-lg" />
                             Dashboard
                         </Link>
 
                         <Link to='/' onClick={() => setOpen(false)}
-                            className="flex w-full items-center gap-x-2 py-3 px-4 text-sm text-stone-800 hover:bg-amber-800 hover:text-white transition-all border-t border-amber-800/10">
-                            <GiTempleGate className="text-lg text-amber-700" />
+                            className={`flex w-full items-center gap-x-2 py-3 px-4 text-sm transition-all border-t border-amber-800/10 
+                                ${matchRoute("/")
+                                    ? "bg-[#5C3317] text-[#FFF9F3]" // Deep brown background, Cream text
+                                    : "text-[#5C3317] hover:bg-[#F2E8DA]" // Deep brown text, light beige hover
+                                }`}>
+                            <GiTempleGate className="text-lg " />
                             Home
                         </Link>
 
@@ -68,11 +81,14 @@ export default function MobileProfileDropDown() {
                         <Link
                             to='/heritage-map'
                             onClick={() => setOpen(false)}
-                            className="flex w-full items-center gap-x-2 py-3 px-4 text-sm text-stone-800 hover:bg-amber-900 hover:text-amber-50 transition-all border-b border-amber-800/10 group"
+                            className={`flex w-full items-center gap-x-2 py-3 px-4 text-sm  transition-all border-b border-amber-800/10 group ${matchRoute("/heritage-map")
+                                    ? "bg-[#5C3317] text-[#FFF9F3]" // Deep brown background, Cream text
+                                    : "text-[#5C3317] hover:bg-[#F2E8DA]" // Deep brown text, light beige hover
+                                }`}
                         >
                             <div className="relative">
-                                {/* The Main Map Icon */}
-                                <GiTreasureMap className="text-xl text-amber-700 group-hover:text-amber-200 transition-colors" />
+                                {/* The Main Mape Icon */}
+                                <GiTreasureMap className="text-xl  group-hover:text-amber-200 transition-colors" />
 
                                 {/* Small pulse effect to make it look "interactive" or "alive" */}
                                 <span className="absolute -top-1 -right-1 flex h-2 w-2">
@@ -87,31 +103,36 @@ export default function MobileProfileDropDown() {
                         </Link>
 
                         <Link to='/about' onClick={() => setOpen(false)}
-                            className="flex w-full items-center gap-x-2 py-3 px-4 text-sm text-stone-800 hover:bg-amber-800 hover:text-white transition-all border-t border-amber-800/10">
-                            <GiOldLantern className="text-lg text-amber-700" />
-                            About us
-                        </Link>
+                            className={`flex w-full items-center gap-x-2 py-3 px-4 text-sm transition-all border-t border-amber-800/10 ${
+        matchRoute("/about")
+          ? "bg-[#5C3317] text-[#FFF9F3]" // Deep brown background, Cream text
+          : "text-[#5C3317] hover:bg-[#F2E8DA]" // Deep brown text, light beige hover
+      }`}>
+                            <GiOldLantern className="text-lg " />
+                        About us
+                    </Link>
 
-                        {/* <Link to='/contact' onClick={() => setOpen(false)} 
+                    {/* <Link to='/contact' onClick={() => setOpen(false)} 
                             className="flex w-full items-center gap-x-2 py-3 px-4 text-sm text-stone-800 hover:bg-amber-800 hover:text-white transition-all">
                             <MdOutlineContactPhone className="text-lg text-amber-700" />
                             Reach Out
                         </Link> */}
 
-                        {/* Logout Button - Distinctive Deep Red */}
-                        <div
-                            onClick={() => {
-                                dispatch(logout(navigate))
-                                setOpen(false)
-                            }}
-                            className="flex w-full items-center gap-x-2 py-3 px-4 text-sm font-bold text-red-800 hover:bg-red-800 hover:text-white transition-all border-t-2 border-amber-800 mt-1"
-                        >
-                            <VscSignOut className="text-lg" />
-                            Logout
-                        </div>
+                    {/* Logout Button - Distinctive Deep Red */}
+                    <div
+                        onClick={() => {
+                            dispatch(logout(navigate))
+                            setOpen(false)
+                        }}
+                        className="flex w-full items-center gap-x-2 py-3 px-4 text-sm font-bold text-red-800 hover:bg-red-800 hover:text-white transition-all border-t-2 border-amber-800 mt-1"
+                    >
+                        <VscSignOut className="text-lg" />
+                        Logout
                     </div>
                 </div>
-            )}
-        </button>
+                </div>
+    )
+}
+        </button >
     )
 }
