@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Star } from "lucide-react";
 import Map from "../pages/Map.jsx";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [heroImage, setHeroImage] = useState(0)
@@ -81,14 +82,14 @@ const Home = () => {
 
           {/* 4. Refined Navigation - Clean & Minimal */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-0 border border-stone-200 bg-white shadow-sm overflow-hidden rounded-sm">
-            <a href="#" className="px-12 py-6 flex items-center justify-center gap-4 hover:bg-stone-50 transition-all group border-b sm:border-b-0 sm:border-r border-stone-200">
-              <span className="text-xs tracking-[0.2em] font-medium text-stone-800 uppercase">Archive</span>
+            <Link to={"/about"} className="px-12 py-6 flex items-center justify-center gap-4 hover:bg-stone-50 transition-all group border-b sm:border-b-0 sm:border-r border-stone-200">
+              <span className="text-xs tracking-[0.2em] font-medium text-stone-800 uppercase">About us</span>
               <span className="text-stone-400 group-hover:translate-x-1 transition-transform">→</span>
-            </a>
-            <a href="#" className="px-12 py-6 flex items-center justify-center gap-4 hover:bg-stone-50 transition-all group">
+            </Link>
+            <Link to={"/heritage-map"} className="px-12 py-6 flex items-center justify-center gap-4 hover:bg-stone-50 transition-all group">
               <span className="text-xs tracking-[0.2em] font-medium text-stone-800 uppercase">Live Map</span>
               <span className="text-stone-400 group-hover:translate-x-1 transition-transform">→</span>
-            </a>
+            </Link>
           </div>
 
           {/* 5. Minimalist Graphic Element */}
@@ -206,12 +207,16 @@ const Home = () => {
             </p>
 
             <div className="flex flex-wrap gap-4 pt-4">
+              <Link to={"/login"}>
               <button className="bg-stone-900 hover:bg-stone-800 text-white px-10 py-4 text-xs font-bold uppercase tracking-widest transition-all shadow-lg shadow-stone-200">
                 Sign In
               </button>
+              </Link>
+              <Link to={"/signup"}>
               <button className="border border-stone-300 hover:bg-stone-50 text-stone-800 px-10 py-4 text-xs font-bold uppercase tracking-widest transition-all">
                 Create Account
               </button>
+              </Link>
             </div>
           </div>
 

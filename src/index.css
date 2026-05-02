@@ -186,7 +186,6 @@ body{
 /* Global Wrapper */
 .about-page-wrapper {
   background-color: #fff;
-  padding-bottom: 100px;
 }
 
 /* Page Title & Hero */
@@ -457,18 +456,17 @@ body{
 
 /* --- KEY FEATURES SECTION --- */
 .features-outer-container { padding: 60px 0; }
-.mandala-bg-box {
+/* .mandala-bg-box {
   position: relative;
   max-width: 1200px;
   margin: 0 auto;
   padding: 80px 20px;
   text-align: center;
-  /* Background Pattern */
   background-image: url('https://www.transparenttextures.com/patterns/mandala.png');
   background-size: 500px;
   background-position: center;
   background-repeat: no-repeat;
-}
+} */
 
 .key-features-title {
   font-family: 'Playfair Display', serif;
@@ -500,7 +498,6 @@ body{
 .feature-info p { font-size: 13px; color: #666; }
 .mandala-bg-box {
   position: relative;
-  max-width: 1200px;
   margin: 0 auto;
   padding: 100px 20px;
   text-align: center;

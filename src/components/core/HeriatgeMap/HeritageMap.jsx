@@ -63,21 +63,21 @@ const HeritageMap = () => {
   const indoreBounds = [[22.5, 75.6], [23.0, 76.1]];
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const categories = ["Religious", "Royal Palace", "Civic Heritage", "Memorial", "Living Heritage"];
+  const categories = ['Religious', 'Architectural', 'Commercial', 'Natural', 'Memorial', 'Museums', 'Memrorial', 'Food', 'Markets'];
 
   // 3. Filter using the 'sites' state variable
   const filteredSites = sites.filter(site => {
-    const matchesCategory = selectedCategory === "All" || site.type === selectedCategory;
+    const matchesCategory = selectedCategory === "All" || site.heritageType === selectedCategory;
     const searchWords = searchTerm.toLowerCase().split(" ").filter(word => word !== "");
     const matchesSearch = searchWords.every(word => 
       site.name.toLowerCase().includes(word) || 
-      site.description.toLowerCase().includes(word)
+      site.about.content.toLowerCase().includes(word)
     );
     return matchesCategory && matchesSearch;
   });
 
   return (
-    <div className="relative h-screen border-8 w-full ">
+    <div className="relative h-screen w-full ">
       <div className="absolute top-8 left-20 z-4 flex flex-col gap-3 w-full max-w-md">
         <div className="flex bg-white rounded-lg shadow-lg p-2 items-center border">
           <select 
@@ -114,7 +114,7 @@ const HeritageMap = () => {
         <GeoJSON
           data={indoreBoundary}
           style={() => ({
-            color: '#16a34a',
+            color: 'transparent',
             weight: 3,
             fillColor: 'transparent',
             opacity: 1

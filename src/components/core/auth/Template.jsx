@@ -4,27 +4,56 @@ import LoginForm from './LoginForm'
 
 const Template = ({ formType, title }) => {
   return (
-    <div className="flex min-h-screen w-full bg-[#D6E9F8]"> {/* Outer blue background */}
+    <div className="flex min-h-screen w-full bg-white">
       
-      {/* 1. Corrected Sidebar: Use exact width % */}
-      <div className="hidden lg:flex w-[35%] bg-[#521319] min-h-screen shrink-0" />
+      {/* LEFT SIDE: Visual/Brand Section (Hidden on mobile) */}
+      <div className="hidden lg:flex w-1/2 bg-[#58181F] relative flex-col justify-between p-16">
+        {/* Top Branding */}
+        <div className="flex items-center gap-2">
+          <div className="w-8 h-8 bg-amber-400 rounded-full" />
+          <span className="text-white font-serif text-xl tracking-widest uppercase">Indore Dursen</span>
+        </div>
 
-      {/* 2. Main Content Area: Simplified layout */}
-      <div className="flex flex-1 items-center justify-start lg:-ml-10"> {/* Negative margin to 'overlap' */}
-        
-        {/* 3. The Cream Container: Large, central form */}
-        <div className="h-[90vh] w-full max-w-[900px] rounded-l-[50px] bg-[#F3E5D5] shadow-2xl flex flex-col items-center justify-center p-6 md:p-12">
+        {/* Central Quote/Text */}
+        <div className="max-w-md">
+          <h2 className="text-white font-serif text-5xl leading-tight mb-6">
+            Connecting the <span className="italic text-amber-400">past</span> to your <span className="italic text-amber-400">present</span>.
+          </h2>
+          <div className="h-1 w-20 bg-amber-400" />
+        </div>
+
+        {/* Bottom Footer for Sidebar */}
+        <p className="text-stone-400 text-xs uppercase tracking-widest">
+          © 2026 Iwm imc Project
+        </p>
+      </div>
+
+      {/* RIGHT SIDE: Form Section */}
+      <div className="w-full lg:w-1/2 flex items-center justify-center bg-[#FDFBF9] p-8 md:p-16">
+        <div className="w-full max-w-md">
           
-          <div className="w-full max-w-[600px]"> {/* Contained width for the form */}
-            <h1 className="text-[2.6rem] font-bold text-[#4A4A4A] mb-12">
-              {title || "Create Account"}
+          {/* Header */}
+          <div className="mb-10">
+            <h1 className="text-3xl font-serif text-stone-900 mb-2">
+              {title || (formType === "signup" ? "Create an Account" : "Welcome Back")}
             </h1>
-
-            {formType === "signup" ? <SignupForm /> : <LoginForm />}
+            <p className="text-stone-500 text-sm">
+              Please enter your details to continue.
+            </p>
           </div>
-          
+
+          {/* Form Switcher */}
+          <div className="bg-white p-8 rounded-xl shadow-sm border border-stone-100">
+             {formType === "signup" ? <SignupForm /> : <LoginForm />}
+          </div>
+
+          {/* Simple Footer Link for Mobile */}
+          <div className="mt-8 text-center lg:hidden">
+             <p className="text-stone-400 text-xs uppercase tracking-widest">Indore Heritage Archive</p>
+          </div>
         </div>
       </div>
+
     </div>
   )
 }
