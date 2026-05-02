@@ -32,8 +32,14 @@ const sendOTP = (email, naviagte) => {
             naviagte("/verify-email")
             toast.success("OTP Send Successfully")
         } catch (error) {
-            console.log("SendOTP error : ", error)
-            toast.error(error?.response?.data?.message)
+            console.log("Send OTP Error... ", error)
+
+            if (error.status === 401) {
+                toast.error(error.data?.message)
+            } else {
+                const errorMessage = error.data?.message || "Somthing went wrong. Please try again"
+                toast.error(errorMessage)
+            }
         } finally {
             dispatch(setLoading(false))
             toast.dismiss(toastId)
@@ -63,12 +69,18 @@ const signUp = (accountType, firstName, lastName, email, password, confirmPasswo
             toast.success("Signup Successfull")
             navigate("/login")
         } catch (error) {
-            console.log("Error occur while Sign Up : ", error.response)
-            toast.error("Error occur while Sign Up : ", error.response.data?.message)
-        }
+            console.log("Sign up Error... ", error)
 
-        dispatch(setLoading(false))
-        toast.dismiss(toastId)
+            if (error.status === 401) {
+                toast.error(error.data?.message)
+            } else {
+                const errorMessage = error.data?.message || "Somthing went wrong. Please try again"
+                toast.error(errorMessage)
+            }
+        } finally {
+            dispatch(setLoading(false))
+            toast.dismiss(toastId)
+        }
     }
 }
 
@@ -98,12 +110,20 @@ const login = (email, password, navigate) => {
             localStorage.setItem("token", JSON.stringify(respose.data?.token))
             localStorage.setItem("user", JSON.stringify({ ...respose.data.user, image: userImage }))
             navigate("/dashboard/my-profile")
+
         } catch (error) {
-            console.log("Error occu while login : ", error)
-            toast.error(error.response?.data?.message)
+            console.log("Login Error... ", error)
+
+            if (error.status === 401) {
+                toast.error(error.data?.message)
+            } else {
+                const errorMessage = error.data?.message || "Somthing went wrong. Please try again"
+                toast.error(errorMessage)
+            }
+        } finally {
+            dispatch(setLoading(false))
+            toast.dismiss(toastId)
         }
-        dispatch(setLoading(false))
-        toast.dismiss(toastId)
     }
 }
 
@@ -123,11 +143,18 @@ const getPasswordToken = (email, setEmailSent) => {
             toast.success("Reset Email Sent")
             setEmailSent(true)
         } catch (error) {
-            console.log("Reset pass token error... ", error)
-            toast.error(error.response?.data?.message)
+            console.log("Get Password Token Error... ", error)
+
+            if (error.status === 401) {
+                toast.error(error.data?.message)
+            } else {
+                const errorMessage = error.data?.message || "Somthing went wrong. Please try again"
+                toast.error(errorMessage)
+            }
+        } finally {
+            toast.dismiss(toastId)
+            dispatch(setLoading(false))
         }
-        toast.dismiss(toastId)
-        dispatch(setLoading(false))
     }
 }
 
@@ -148,11 +175,18 @@ const resetPassword = (password, confirmPassword, token, naviagte) => {
             toast.success("Password Reset successfully")
             naviagte("/login")
         } catch (error) {
-            console.log("Reset password error... ", error)
-            toast.error(error.response?.data?.message)
-        }
+            console.log("ResetPassword Error... ", error)
+
+            if (error.status === 401) {
+                toast.error(error.data?.message)
+            } else {
+                const errorMessage = error.data?.message || "Somthing went wrong. Please try again"
+                toast.error(errorMessage)
+            }
+        }finally{
         toast.dismiss(toastId)
         dispatch(setLoading(false))
+        }
     }
 }
 

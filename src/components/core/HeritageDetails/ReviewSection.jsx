@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Star, Heart, MessageSquare, Plus, Info, Trash2 } from "lucide-react";
 import { getSiteReviews, getReviewStats, toggleLikeReview, deleteReview } from "../../../redux/api/operation/review"; // Adjust path
-import toast from "react-hot-toast";
+import {toast} from "react-toastify";
 import AddReview from "./AddReview"
 
 const ReviewsSection = ({ heritageId }) => {
@@ -44,13 +44,18 @@ const ReviewsSection = ({ heritageId }) => {
   };
 
   const handleDelete = async (reviewId) => {
-    if (!token) return toast.error("Please login to like reviews");
+    if (!token) return toast.error("Please login to Delete reviews");
     const updated = await dispatch(deleteReview(reviewId, token));
     if (updated) {
       // Optimistic UI update or re-fetch
       setReviews(prev => prev.map(r => r._id === reviewId ? { ...r, likes: updated.likes } : r));
     }
     fetchReviewData()
+  }
+
+  const handleAddReview = () =>{
+    if(!token) return toast.error("Please login to Add reviews")
+   setAddReview(true)
   }
 
   if (loading) return <div className="py-10 text-center text-gray-500">Loading reviews...</div>;
@@ -182,7 +187,7 @@ const ReviewsSection = ({ heritageId }) => {
 
       {/* ADD REVIEW BUTTON */}
       <div className="flex justify-center mt-12">
-        <button onClick={() => setAddReview(true)} className="flex items-center gap-2 bg-[#6B8CEF] hover:bg-[#5a79d6] text-white px-8 py-3 rounded-lg font-bold transition-all shadow-lg hover:shadow-xl active:scale-95">
+        <button onClick={() => handleAddReview()} className="flex items-center gap-2 bg-[#6B8CEF] hover:bg-[#5a79d6] text-white px-8 py-3 rounded-lg font-bold transition-all shadow-lg hover:shadow-xl active:scale-95">
           <Plus size={20} />
           Add Review
         </button>

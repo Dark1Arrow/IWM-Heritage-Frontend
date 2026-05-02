@@ -8,6 +8,7 @@ import {
 import { getHeritageDetails } from "../../../redux/api/operation/heritageApi"
 import ReviewsSection from "./ReviewSection";
 import { getSavedHeritage, toggleSaveHeritage } from "../../../redux/api/operation/saved";
+import { toast } from "react-toastify";
 
 const HeritageDetails = () => {
   const { heritageId } = useParams();
@@ -44,6 +45,8 @@ const HeritageDetails = () => {
   const handleToggleSave = async (heritageId) => {
     if (token) {
       await dispatch(toggleSaveHeritage(heritageId, token))
+    }else{
+      toast.error("First login OR Sign your Account")
     }
     setChanges(!changes)
   }

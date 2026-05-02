@@ -1,10 +1,10 @@
-import { toast } from "react-hot-toast"
+import { toast } from "react-toastify"
 import { apiConnector } from "../apiConnector"
 import { savedHeritageEndpoints } from "../api.js"
 
-const { 
-    TOGGLE_SAVED_HERITAGE_API, 
-    GET_SAVED_HERITAGE_API 
+const {
+    TOGGLE_SAVED_HERITAGE_API,
+    GET_SAVED_HERITAGE_API
 } = savedHeritageEndpoints
 
 // TOGGLE Save/Unsave (Matches: POST /:heritageId)
@@ -15,14 +15,12 @@ const toggleSaveHeritage = (heritageId, token) => {
         try {
             // Note: Since heritageId is a URL param in your router, 
             // we append it to the API URL
-            console.log("hey")
             const response = await apiConnector(
-                "POST", 
+                "POST",
                 `${TOGGLE_SAVED_HERITAGE_API}/${heritageId}`,
                 null, // No body needed as ID is in the URL
                 { Authorization: `Bearer ${token}` }
             );
-console.log(response)
             if (!response?.data?.success) {
                 throw new Error(response.data.message);
             }
@@ -30,8 +28,14 @@ console.log(response)
             toast.success(response.data.message || "Heritage list updated");
             success = true;
         } catch (error) {
-            console.log("TOGGLE_SAVE_HERITAGE_API ERROR............", error);
-            toast.error(error.response?.data?.message || "Could not update saved heritage");
+            console.log("Saved Toggle Heritage Error... ", error)
+
+            if (error.status === 401) {
+                toast.error(error.data?.message)
+            } else {
+                const errorMessage = error.data?.message || "Somthing went wrong. Please try again"
+                toast.error(errorMessage)
+            }
         }
         toast.dismiss(toastId);
         return success;
@@ -57,12 +61,18 @@ const getSavedHeritage = (token) => {
 
             result = response?.data?.data;
         } catch (error) {
-            console.log("GET_SAVED_HERITAGE_API ERROR............", error);
-            toast.error(error.response?.data?.message || "Could not fetch saved sites");
+           console.log("Get Saved Heritage Error... ", error)
+
+            if (error.status === 401) {
+                toast.error(error.data?.message)
+            } else {
+                const errorMessage = error.data?.message || "Somthing went wrong. Please try again"
+                toast.error(errorMessage)
+            }
         }
         toast.dismiss(toastId);
         return result;
     };
 };
 
-export {getSavedHeritage,toggleSaveHeritage}
+export { getSavedHeritage, toggleSaveHeritage }

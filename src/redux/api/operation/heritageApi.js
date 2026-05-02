@@ -1,109 +1,128 @@
-import { toast } from "react-hot-toast"
+import { toast } from "react-toastify"
 import { apiConnector } from "../apiConnector"
 import { heritageEndpoints } from "../api.js" // Ensure you define your endpoints here
 
-const { CREATE_HERITAGE_API, FETCH_ALL_HERITAGE_API, DELETE_HERITAGE_API ,GET_HERITAGE_BY_ID_API,EDIT_HERITAGE_DETAILS_API} = heritageEndpoints
+const { CREATE_HERITAGE_API, FETCH_ALL_HERITAGE_API, DELETE_HERITAGE_API, GET_HERITAGE_BY_ID_API, EDIT_HERITAGE_DETAILS_API } = heritageEndpoints
 
 const createHeritage = (formData, token, navigate) => {
-    return async (dispatch) => {
-        const toastId = toast.loading("Creating Heritage Site...")
-        // dispatch(setLoading(true)) // Optional: if you have a loading state for heritage
-        console.log("hey")
-        try {
-            const response = await apiConnector(
-                "POST",
-                CREATE_HERITAGE_API,
-                formData,
-                {
-                    "Content-Type": "multipart/form-data",
-                    Authorization: `Bearer ${token}`,
-                }
-            )
-
-            console.log("CREATE_HERITAGE_API RESPONSE............", response)
-
-            if (!response.data.success) {
-                throw new Error(response.data.message)
-            }
-
-            toast.success("Heritage Site Created Successfully")
-            navigate("/dashboard/my-heritage") // Or wherever you want to redirect
-
-        } catch (error) {
-            console.log("CREATE_HERITAGE_API ERROR............", error)
-            toast.error(error.response?.data?.message || "Could not create heritage site")
+  return async (dispatch) => {
+    const toastId = toast.loading("Creating Heritage Site...")
+    // dispatch(setLoading(true)) // Optional: if you have a loading state for heritage
+    console.log("hey")
+    try {
+      const response = await apiConnector(
+        "POST",
+        CREATE_HERITAGE_API,
+        formData,
+        {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${token}`,
         }
+      )
 
-        // dispatch(setLoading(false))
-        toast.dismiss(toastId)
+      console.log("CREATE_HERITAGE_API RESPONSE............", response)
+
+      if (!response.data.success) {
+        throw new Error(response.data.message)
+      }
+
+      toast.success("Heritage Site Created Successfully")
+      navigate("/dashboard/my-heritage") // Or wherever you want to redirect
+
+    } catch (error) {
+      console.log("Create Heritage Error... ", error)
+
+      if (error.status === 401) {
+        toast.error(error.data?.message)
+      } else {
+        const errorMessage = error.data?.message || "Somthing went wrong. Please try again"
+        toast.error(errorMessage)
+      }
+    } finally {
+
+      // dispatch(setLoading(false))
+      toast.dismiss(toastId)
     }
+  }
 }
 
 const getAllHeritage = (token) => {
-    return async (dispatch) => {
-        const toastId = toast.loading("Loading Heritage Sites...")
-        // dispatch(setLoading(true)) 
-        try {
-            const response = await apiConnector(
-                "GET",                      // Method
-                FETCH_ALL_HERITAGE_API,     // URL
-                null,                       // Body (Must be null for GET)
-                {                           // Headers (This is the 4th argument)
-                    Authorization: `Bearer ${token}`,
-                }
-            );
-
-            console.log("GET_ALL_HERITAGE_API RESPONSE............", response)
-
-            if (!response.data.success) {
-                throw new Error(response.data.message)
-            }
-
-            // Optional: If you have a Redux slice to store the heritage list
-            // dispatch(setHeritageData(response.data.data))
-
-            toast.success("Heritage Sites Loaded")
-            return response.data.data; // Return data so you can use it in your component's useEffect
-
-        } catch (error) {
-            console.log("GET_ALL_HERITAGE_API ERROR............", error)
-            toast.error(error.response?.data?.message || "Could not fetch heritage sites")
-        } finally {
-            // dispatch(setLoading(false))
-            toast.dismiss(toastId)
+  return async (dispatch) => {
+    // const toastId = toast.loading("Loading Heritage Sites...")
+    // dispatch(setLoading(true)) 
+    try {
+      const response = await apiConnector(
+        "GET",                      // Method
+        FETCH_ALL_HERITAGE_API,     // URL
+        null,                       // Body (Must be null for GET)
+        {                           // Headers (This is the 4th argument)
+          Authorization: `Bearer ${token}`,
         }
-    }
+      );
+
+      console.log("GET_ALL_HERITAGE_API RESPONSE............", response)
+
+      if (!response.data.success) {
+        throw new Error(response.data.message)
+      }
+
+      // Optional: If you have a Redux slice to store the heritage list
+      // dispatch(setHeritageData(response.data.data))
+
+      toast.success("Heritage Sites Loaded")
+      return response.data.data; // Return data so you can use it in your component's useEffect
+
+    } catch (error) {
+      console.log("Get ALL Heritage Error... ", error)
+
+      if (error.status === 401) {
+        toast.error(error.data?.message)
+      } else {
+        const errorMessage = error.data?.message || "Somthing went wrong. Please try again"
+        toast.error(errorMessage)
+      }
+    } 
+      // dispatch(setLoading(false))
+      // toast.dismiss(toastId)
+    
+  }
 }
 
 const deleteHeritage = (heritageId, token) => {
-    return async (dispatch) => {
-        const toastId = toast.loading("Deleting Site...");
-        let success = false;
-        try {
-            const response = await apiConnector(
-                "DELETE",
-                `${DELETE_HERITAGE_API}/${heritageId}`,
-                null, // No body for DELETE
-                { Authorization: `Bearer ${token}` }
-            );
+  return async (dispatch) => {
+    const toastId = toast.loading("Deleting Site...");
+    let success = false;
+    try {
+      const response = await apiConnector(
+        "DELETE",
+        `${DELETE_HERITAGE_API}/${heritageId}`,
+        null, // No body for DELETE
+        { Authorization: `Bearer ${token}` }
+      );
 
-            if (!response?.data?.success) {
-                throw new Error(response.data.message);
-            }
+      if (!response?.data?.success) {
+        throw new Error(response.data.message);
+      }
 
-            toast.success("Site Deleted Successfully");
-            success = true;
-        } catch (error) {
-            console.log("DELETE_HERITAGE_API ERROR............", error);
-            toast.error(error.response?.data?.message || "Could not delete site");
-        }
-        toast.dismiss(toastId);
-        return success;
-    };
+      toast.success("Site Deleted Successfully");
+      success = true;
+    } catch (error) {
+      console.log("Delete Heriatge Error... ", error)
+
+      if (error.status === 401) {
+        toast.error(error.data?.message)
+      } else {
+        const errorMessage = error.data?.message || "Somthing went wrong. Please try again"
+        toast.error(errorMessage)
+      }
+    }
+    toast.dismiss(toastId);
+    return success;
+  };
 };
 
 // GET Heritage Details by ID
-const getHeritageDetails = (heritageId,savedList) => {
+const getHeritageDetails = (heritageId, savedList) => {
   return async (dispatch) => {
     let result = null;
     try {
@@ -116,7 +135,7 @@ const getHeritageDetails = (heritageId,savedList) => {
       if (!response?.data?.success) {
         throw new Error(response.data.message);
       }
-      
+
       result = response?.data?.data;
       result = {
         ...result,
@@ -124,9 +143,16 @@ const getHeritageDetails = (heritageId,savedList) => {
           (saved) => saved.heritageId._id.toString() === result._id.toString()
         ),
       };
-      console.log("saved" , savedList)
+      console.log("saved", savedList)
     } catch (error) {
-      console.log("GET_HERITAGE_DETAILS_API ERROR............", error);
+      console.log("Get Heriatage Details Error... ", error)
+
+      if (error.status === 401) {
+        toast.error(error.data?.message)
+      } else {
+        const errorMessage = error.data?.message || "Somthing went wrong. Please try again"
+        toast.error(errorMessage)
+      }
       // Optional: toast.error("Could not fetch heritage details");
     }
     return result;
@@ -155,11 +181,17 @@ const updateHeritage = (formData, token, navigate) => {
       toast.success("Heritage Updated Successfully");
       navigate("/dashboard/all-heritage"); // Navigate to your list page
     } catch (error) {
-      console.log("EDIT_HERITAGE_API ERROR............", error);
-      toast.error(error.response?.data?.message || "Could not update heritage");
+      console.log("Update Heriatge Error... ", error)
+
+      if (error.status === 401) {
+        toast.error(error.data?.message)
+      } else {
+        const errorMessage = error.data?.message || "Somthing went wrong. Please try again"
+        toast.error(errorMessage)
+      }
     }
     toast.dismiss(toastId);
   };
 };
 
-export { createHeritage, getAllHeritage,deleteHeritage,getHeritageDetails,updateHeritage }
+export { createHeritage, getAllHeritage, deleteHeritage, getHeritageDetails, updateHeritage }

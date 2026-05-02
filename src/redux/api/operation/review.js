@@ -1,4 +1,4 @@
-import { toast } from "react-hot-toast"
+import { toast } from "react-toastify"
 import { apiConnector } from "../apiConnector"
 import { reviewHeritageEndpints } from "../api.js"
 import { useSelector } from "react-redux";
@@ -12,7 +12,7 @@ const {
 } = reviewHeritageEndpints
 
 // 1. GET ALL REVIEWS FOR A SITE (Matches: GET /:heritageId)
-export const getSiteReviews = (user,heritageId) => {
+export const getSiteReviews = (user, heritageId) => {
     return async (dispatch, getState) => { // Added getState to access the current user
         let result = [];
         try {
@@ -24,7 +24,7 @@ export const getSiteReviews = (user,heritageId) => {
             if (!response?.data?.success) throw new Error(response.data.message);
 
             const rawReviews = response?.data?.data || [];
-            
+
             // Get user from your auth state (adjust 'auth' to match your store slice name)
             // const {user} = useSelector((state) => state.profile); 
             // console.log(user)
@@ -61,8 +61,13 @@ export const createReview = (data, token) => {
             toast.success("Review added successfully")
             success = true
         } catch (error) {
-            console.log("CREATE_REVIEW_ERROR............", error)
-            toast.error(error.response?.data?.message || "Could not post review")
+            console.log("Create Review Error... ", error)
+            if (error.status === 401) {
+                toast.error(error.data?.message)
+            } else {
+                const errorMessage = error.data?.message || "Somthing went wrong. Please try again"
+                toast.error(errorMessage)
+            }
         }
         toast.dismiss(toastId)
         return success
@@ -105,8 +110,14 @@ export const deleteReview = (reviewId, token) => {
             toast.success("Review deleted")
             success = true
         } catch (error) {
-            console.log("DELETE_REVIEW_ERROR............", error)
-            toast.error("Could not delete review")
+            console.log("Delete Review Error... ", error)
+
+            if (error.status === 401) {
+                toast.error(error.data?.message)
+            } else {
+                const errorMessage = error.data?.message || "Somthing went wrong. Please try again"
+                toast.error(errorMessage)
+            }
         }
         toast.dismiss(toastId)
         return success

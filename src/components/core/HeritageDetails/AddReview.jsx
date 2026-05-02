@@ -18,7 +18,6 @@ const AddReviewModal = ({ heritageId, onClose }) => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  console.log("jkk", heritageId)
 
   const onSubmit = async (data) => {
     if (rating === 0) return alert("Please select a star rating");
