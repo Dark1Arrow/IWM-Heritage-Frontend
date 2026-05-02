@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom"
 
 import useOnClickOutside from "../../../hooks/useOnOneClick"
 import Img from './../../common/Img';
-import { logout } from "../../../redux/api/operation/authapi"
+import { logout } from "../../../redux/api/operation/authApi"
 
 // Icons that feel more "Heritage/Traditional"
 import { VscDashboard, VscSignOut } from "react-icons/vsc"
