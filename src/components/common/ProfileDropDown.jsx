@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { Link, useNavigate } from "react-router-dom"
 
 import useOnClickOutside from "../../hooks/useOnOneClick"
-import { logout } from "../../redux/api/operation/authAPI"
+import { logout } from "../../redux/api/operation/authApi"
 import Img from "./Img"
 
 export default function ProfileDropdown() {
