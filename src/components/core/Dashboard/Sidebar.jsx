@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react' // Added useRef
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import Loading from '../../common/Loading.jsx'
@@ -6,7 +6,7 @@ import { IoMdClose } from "react-icons/io"
 import { HiMenuAlt1 } from "react-icons/hi"
 import { setOpenSideMenu, setScreenSize } from '../../../redux/api/slices/sidebarSlice.js'
 import SidebarLinks from './SidebarLinks'
-import { sidebarLinks,navbarLinks } from '../../../../data/dashboardLinks.js'
+import { sidebarLinks, navbarLinks } from '../../../../data/dashboardLinks.js'
 import { VscSignOut } from 'react-icons/vsc'
 import ConformationModel from '../../common/ConformationModel.jsx'
 import { logout } from '../../../redux/api/operation/authApi.js'
@@ -30,7 +30,6 @@ const Sidebar = () => {
         } catch (error) {
             console.log(error)
         }
-
     }, [])
 
     useEffect(() => {
@@ -50,29 +49,32 @@ const Sidebar = () => {
             <Loading />
         </div>
     }
+
     return (
         <>
-            <div className="sm:hidden text-white absolute left-7 top-3 cursor-pointer " onClick={() => dispatch(setOpenSideMenu(!openSideMenu))}>
+            {/* Mobile Toggle Button */}
+            <div className="sm:hidden text-black absolute z-30 left-7 top-3 cursor-pointer" onClick={() => dispatch(setOpenSideMenu(!openSideMenu))}>
                 {openSideMenu ? <IoMdClose size={33} /> : <HiMenuAlt1 size={33} />}
             </div>
 
+            {/* BACKGROUND OVERLAY (Visible only on mobile when menu is open) */}
+            {openSideMenu && screenSize <= 640 && (
+                <div 
+                    className="fixed inset-0 z-10 bg-black/50 backdrop-blur-sm transition-opacity sm:hidden"
+                    onClick={() => dispatch(setOpenSideMenu(false))}
+                ></div>
+            )}
+
             {
                 openSideMenu &&
-                <div className='flex h-[calc(100vh-3.5rem)] min-w-[220px] flex-col border-r-[1px] border-r-[#95846A] py-10 "'>
+                <div className='absolute sm:static z-20 flex h-[calc(100vh-3.5rem)] min-w-[220px] flex-col border-r-[1px] border-r-[#95846A] py-10 bg-[#fdfaf1] transition-all duration-300'> 
                     <div className='flex flex-col mt-6'>
-                        {navbarLinks.map((link) => {
-                            if(link.type && user.accountType !== link.type ) return null
-                            return (
-                                <SidebarLinks className="sm:hidden" key={link.id} link={link} iconName={link.icon} />
-                            )
-                        })}
                         {sidebarLinks.map((link) => {
-                            if(link.type && user.accountType !== link.type ) return null
+                            if (link.type && user.accountType !== link.type) return null
                             return (
                                 <SidebarLinks key={link.id} link={link} iconName={link.icon} />
                             )
                         })}
-                        
                     </div>
 
                     <div className="mx-auto mt-6 mb-6 h-[1px] w-10/12 bg-gray-700">

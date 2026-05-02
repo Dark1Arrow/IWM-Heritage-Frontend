@@ -29,11 +29,11 @@ const Home = () => {
     <div className="w-full bg-[#f5e6d3] font-sans overflow-x-hidden">
 
       {/* 1. TOP BANNER HERO */}
-      <section className="relative w-full h-[350px] sm:h-[450px] lg:h-[600px] overflow-hidden">
+      <section className="relative w-full h-[95vh] sm:h-[600px] overflow-hidden">
         <img
           src={heroSectionImages[heroImage]}
           alt="Banner"
-          className="w-full h-full object-"
+          className="w-full h-full object-cover"
         />
         <div className="absolute bottom-0 w-full h-[30%] pt-30 bg-gradient-to-t from-[#000000c0]  to-[#00000000] py-4">
           <div className="max-w-7xl mx-auto px-4">

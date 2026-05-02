@@ -30,7 +30,7 @@ export const sidebarLinks = [
   },
 ];
 
-export const navbarLinks = [
+const navbarLinks = [
   {
     id: 1,
     name: "Home",
@@ -52,3 +52,5 @@ export const navbarLinks = [
     icon: "VscInfo", // Changed from Add to Info for "About Us"
   },
 ];
+
+export {navbarLinks}
