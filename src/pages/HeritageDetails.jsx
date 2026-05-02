@@ -1,6 +1,8 @@
 import React from 'react'
 import HeritageDetail from '../components/core/HeritageDetails/HeritageDetails'
 
+console.log("ENV: ", import.meta.env.VITE_API_URL)
+
 const HeritageDetails = () => {
   return (
     <div>
