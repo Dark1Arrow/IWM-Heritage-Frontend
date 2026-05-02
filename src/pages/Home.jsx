@@ -29,7 +29,7 @@ const Home = () => {
     <div className="w-full bg-[#f5e6d3] font-sans overflow-x-hidden">
 
       {/* 1. TOP BANNER HERO */}
-      <section className="relative w-full h-[95vh] sm:h-[600px] overflow-hidden">
+      <section className="relative w-full h-[90vh] sm:h-[600px] overflow-hidden">
         <img
           src={heroSectionImages[heroImage]}
           alt="Banner"
@@ -140,7 +140,7 @@ const Home = () => {
           <h2 className="text-3xl sm:text-4xl font-bold text-[#8B3A3A] mb-4">Uncover Indore</h2>
           <p className="text-gray-600 mb-8 sm:mb-10 text-base sm:text-lg">Dive into Indore’s famous food culture with Sarafa Bazaar.</p>
           <div className="w-full relative h-[350px] sm:h-[500px] rounded-[1.5rem] sm:rounded-[2.5rem] border-2 border-[#E5DFD5] ">
-            <img src="/map.svg" className="absolute inset-0 w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"/>
+            <img src="/map.svg" className="absolute inset-0 w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" />
           </div>
         </div>
       </section>
@@ -220,7 +220,77 @@ const Home = () => {
 
       {/* 6. FOOTER */}
 
+      {/* 6. FOOTER */}
+      <footer className="bg-[#1a1a1a] text-[#e5dfd5] pt-20 pb-10 px-6 md:px-12">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
 
+            {/* Column 1: Brand/Logo */}
+            <div className="md:col-span-1">
+              <h2 className="font-serif text-2xl tracking-tighter mb-4">
+                INDORE <span className="italic opacity-70">HERITAGE</span>
+              </h2>
+              <div className="h-px w-12 bg-amber-600/50 mb-6"></div>
+              <p className="text-sm text-stone-400 leading-relaxed font-light">
+                Documenting the architectural soul of the Holkar dynasty. A digital archive for the modern explorer.
+              </p>
+            </div>
+
+            {/* Column 2: Navigation - Focused on your current pages */}
+            <div>
+              <h4 className="text-[10px] uppercase tracking-[0.3em] font-bold text-amber-500/80 mb-6">Sitemap</h4>
+              <ul className="space-y-4 text-sm font-light text-stone-300 uppercase tracking-wider">
+                <li className="hover:text-amber-400 transition-colors cursor-pointer">
+                  <a href="/">Home</a>
+                </li>
+                <li className="hover:text-amber-400 transition-colors cursor-pointer">
+                  <a href="/about">About Archive</a>
+                </li>
+                <li className="hover:text-amber-400 transition-colors cursor-pointer">
+                  <a href="/map">Heritage Map</a>
+                </li>
+                <li className="hover:text-amber-400 transition-colors cursor-pointer">
+                  <a href="/dashboard">User Dashboard</a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Column 3: Regional Details (Indore Focused) */}
+            <div>
+              <h4 className="text-[10px] uppercase tracking-[0.3em] font-bold text-amber-500/80 mb-6">Location</h4>
+              <p className="text-sm text-stone-400 font-light leading-relaxed">
+                Heart of Malwa,<br />
+                Madhya Pradesh, India<br />
+                <span className="text-[10px] text-stone-600 mt-2 block italic">22.7196° N, 75.8577° E</span>
+              </p>
+            </div>
+
+            {/* Column 4: Dashboard Quick Link / Join */}
+            <div className="bg-stone-800/20 p-6 border border-stone-800 rounded-sm">
+              <h4 className="text-[10px] uppercase tracking-[0.3em] font-bold text-stone-100 mb-4">Collectors Access</h4>
+              <p className="text-xs text-stone-500 mb-6 leading-relaxed">Join our community to save locations to your personal map dashboard.</p>
+              <button className="w-full py-3 bg-stone-100 text-stone-950 text-[10px] font-bold uppercase tracking-widest hover:bg-amber-500 transition-colors">
+                Open Dashboard
+              </button>
+            </div>
+          </div>
+
+          {/* Bottom Bar */}
+          <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div className="flex items-center gap-8">
+              <div className="p-2 border border-stone-800 rounded-full">
+                <Star size={14} className="text-amber-600 fill-amber-600" />
+              </div>
+              <div className="w-px h-4 bg-stone-800"></div>
+              <p className="text-[10px] uppercase tracking-widest text-stone-500">
+                © 2024 Indore Heritage Archive. All Rights Reserved.
+              </p>
+            </div>
+
+
+          </div>
+        </div>
+      </footer>
 
     </div>
   );

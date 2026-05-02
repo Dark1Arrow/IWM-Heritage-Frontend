@@ -51,9 +51,14 @@ const Navbar = () => {
       <div className="flex w-11/12 max-w-maxContent items-center justify-between">
         
         {/* Logo */}
-        <Link to="/" className="text-2xl font-bold text-white tracking-widest uppercase">
-          Heritage<span className="text-orange-400">Hub</span>
-        </Link>
+        <Link to="/" className="group flex flex-col items-start leading-none">
+  <span className="font-serif text-2xl text-white tracking-[0.2em] uppercase transition-colors group-hover:text-stone-300">
+    INDORE
+  </span>
+  <span className="text-[10px] font-sans tracking-[0.5em] text-amber-500 uppercase font-bold -mt-1 ml-0.5">
+    Dursan
+  </span>
+</Link>
 
         {/* Navigation Links */}
         <ul className="hidden md:flex items-center gap-x-8">
