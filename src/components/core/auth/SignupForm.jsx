@@ -10,7 +10,6 @@ const SignupForm = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-    const [accountType, setAccountType] = useState(ACCOUNT_TYPE.ADMIN)
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
@@ -29,7 +28,7 @@ const SignupForm = () => {
 
     const handleOnSubmit = (e) => {
         e.preventDefault()
-        const signupData = { ...formData, accountType }
+        const signupData = { ...formData }
         dispatch(setSignupData(signupData))
         dispatch(sendOTP(formData.email, navigate))
     }

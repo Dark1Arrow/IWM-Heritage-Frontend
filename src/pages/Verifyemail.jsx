@@ -23,7 +23,7 @@ const Verifyemail = () => {
     const handleVerifyAndSignUp = (e) => {
         e.preventDefault()
         const { firstName, lastName, password, confirmPassword, email, accountType } = signupData
-        dispatch(signUp(accountType, lastName, firstName, email, password, confirmPassword, otp, navigate))
+        dispatch(signUp(accountType,  firstName,lastName, email, password, confirmPassword, otp, navigate))
     }
 
     return (
