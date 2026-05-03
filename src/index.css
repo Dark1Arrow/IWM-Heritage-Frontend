@@ -812,18 +812,132 @@ body {
   /* Pic mein description thoda italicized/soft lag raha hai */
 }
 
-/* Responsive adjustment */
+/* --- RESPONSIVE DESIGN --- */
 @media (max-width: 768px) {
-  .audience-grid {
+  .page-title {
+    font-size: 36px !important;
+    margin: 40px 0 20px 0 !important;
+  }
+
+  .heading-serif {
+    font-size: 28px !important;
+    text-align: center;
+  }
+
+  .section-header {
+    flex-direction: column !important;
+    text-align: center;
+    align-items: center !important;
+    margin-bottom: 40px !important;
+  }
+
+  .subtitle-right {
+    text-align: center !important;
+    margin-top: 15px;
+    max-width: 100% !important;
+  }
+
+  /* Hero Section */
+  .hero-container {
+    flex-direction: column !important;
+    text-align: center;
+    gap: 40px !important;
+    margin-bottom: 60px !important;
+  }
+
+  .hero-text {
+    display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  .audience-card {
+  .main-heading {
+    font-size: 30px !important;
+    max-width: 100% !important;
+    line-height: 1.3 !important;
+  }
+
+  .description {
+    max-width: 100% !important;
+  }
+
+  .info-box {
+    margin: 0 auto;
+    max-width: 100% !important;
+  }
+
+  .image-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-rows: auto !important;
+    height: auto !important;
+    gap: 10px !important;
+  }
+
+  .grid-item {
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
+    height: 160px !important;
+  }
+
+  .item-chappan {
+    grid-row: span 1 !important;
+  }
+
+  /* Challenges Section */
+  .challenges-cards-grid {
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+
+  .challenge-info-card {
     width: 100%;
-    max-width: 350px;
+  }
+
+  /* Key Features Section */
+  .mandala-bg-box {
+    padding: 60px 20px !important;
+    border-radius: 20px !important;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr !important;
+    max-width: 100% !important;
+    gap: 20px !important;
+    margin-top: 30px !important;
+  }
+
+  .key-features-title {
+    font-size: 28px !important;
+    margin-bottom: 30px !important;
+  }
+
+  /* Audience Section */
+  .audience-grid {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 25px !important;
+  }
+
+  .audience-card {
+    width: 100% !important;
+    max-width: 450px !important;
   }
 }
+
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 30px !important;
+  }
+
+  .main-heading {
+    font-size: 26px !important;
+  }
+
+  .image-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 
 .mandala-fill-box {
   position: relative;
