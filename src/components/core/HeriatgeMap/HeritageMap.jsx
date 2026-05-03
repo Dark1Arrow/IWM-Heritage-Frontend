@@ -77,12 +77,12 @@ const HeritageMap = () => {
   });
 
   return (
-    <div className="relative h-screen w-full ">
-      <div className="absolute top-8 left-20 z-4 flex flex-col gap-3 w-full max-w-md">
-        <div className="flex bg-white rounded-lg shadow-lg p-2 items-center border">
+    <div className="relative h-[calc(100vh-64px)] w-full ">
+      <div className="absolute top-4 left-1/2 -translate-x-1/2 md:left-20 md:translate-x-0 z-[1000] flex flex-col gap-3 w-[90%] md:w-full md:max-w-md">
+        <div className="flex bg-white rounded-lg shadow-xl p-1 items-center border border-gray-200">
           <select 
             onChange={(e) => setSelectedCategory(e.target.value)}
-            className="px-3 border-r text-sm font-medium outline-none bg-transparent"
+            className="px-2 py-2 border-r text-[12px] md:text-sm font-semibold outline-none bg-transparent cursor-pointer"
           >
             <option value="All">All Categories</option>
             {categories.map(cat => <option key={cat} value={cat}>{cat}</option>)}
@@ -91,14 +91,14 @@ const HeritageMap = () => {
             type="text"
             placeholder="Search heritage places..."
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="flex-1 px-4 outline-none text-sm"
+            className="flex-1 px-3 outline-none text-[12px] md:text-sm"
           />
         </div>
       </div>
 
       <MapContainer
         center={[22.7196, 75.8577]}
-        zoom={12}
+        zoom={13}
         minZoom={12}
         maxZoom={18}
         maxBounds={indoreBounds}

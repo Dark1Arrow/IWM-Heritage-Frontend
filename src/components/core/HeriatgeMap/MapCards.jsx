@@ -28,7 +28,7 @@ const MapCards = ({ sites }) => {
                     >
                         <Popup className="custom-popup">
                             <Link to={`/heritage-details/${site._id}`}>
-                                <div className="w-64 overflow-hidden rounded-lg">
+                                <div className="w-[240px] sm:w-64 overflow-hidden rounded-lg">
                                     {/* {console.log(site)} */}
                                     <img
                                         src={site.mainImage || "/gandhi-hall.jpg"}
