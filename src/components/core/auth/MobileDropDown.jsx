@@ -82,8 +82,8 @@ export default function MobileProfileDropDown() {
                             to='/heritage-map'
                             onClick={() => setOpen(false)}
                             className={`flex w-full items-center gap-x-2 py-3 px-4 text-sm  transition-all border-b border-amber-800/10 group ${matchRoute("/heritage-map")
-                                    ? "bg-[#5C3317] text-[#FFF9F3]" // Deep brown background, Cream text
-                                    : "text-[#5C3317] hover:bg-[#F2E8DA]" // Deep brown text, light beige hover
+                                ? "bg-[#5C3317] text-[#FFF9F3]" // Deep brown background, Cream text
+                                : "text-[#5C3317] hover:bg-[#F2E8DA]" // Deep brown text, light beige hover
                                 }`}
                         >
                             <div className="relative">
@@ -103,36 +103,35 @@ export default function MobileProfileDropDown() {
                         </Link>
 
                         <Link to='/about' onClick={() => setOpen(false)}
-                            className={`flex w-full items-center gap-x-2 py-3 px-4 text-sm transition-all border-t border-amber-800/10 ${
-        matchRoute("/about")
-          ? "bg-[#5C3317] text-[#FFF9F3]" // Deep brown background, Cream text
-          : "text-[#5C3317] hover:bg-[#F2E8DA]" // Deep brown text, light beige hover
-      }`}>
+                            className={`flex w-full items-center gap-x-2 py-3 px-4 text-sm transition-all border-t border-amber-800/10 ${matchRoute("/about")
+                                    ? "bg-[#5C3317] text-[#FFF9F3]" // Deep brown background, Cream text
+                                    : "text-[#5C3317] hover:bg-[#F2E8DA]" // Deep brown text, light beige hover
+                                }`}>
                             <GiOldLantern className="text-lg " />
-                        About us
-                    </Link>
+                            About us
+                        </Link>
 
-                    {/* <Link to='/contact' onClick={() => setOpen(false)} 
+                        {/* <Link to='/contact' onClick={() => setOpen(false)} 
                             className="flex w-full items-center gap-x-2 py-3 px-4 text-sm text-stone-800 hover:bg-amber-800 hover:text-white transition-all">
                             <MdOutlineContactPhone className="text-lg text-amber-700" />
                             Reach Out
                         </Link> */}
 
-                    {/* Logout Button - Distinctive Deep Red */}
-                    <div
-                        onClick={() => {
-                            dispatch(logout(navigate))
-                            setOpen(false)
-                        }}
-                        className="flex w-full items-center gap-x-2 py-3 px-4 text-sm font-bold text-red-800 hover:bg-red-800 hover:text-white transition-all border-t-2 border-amber-800 mt-1"
-                    >
-                        <VscSignOut className="text-lg" />
-                        Logout
+                        {/* Logout Button - Distinctive Deep Red */}
+                        <div
+                            onClick={() => {
+                                dispatch(logout(navigate))
+                                setOpen(false)
+                            }}
+                            className="flex w-full items-center gap-x-2 py-3 px-4 text-sm font-bold text-red-800 hover:bg-red-800 hover:text-white transition-all border-t-2 border-amber-800 mt-1"
+                        >
+                            <VscSignOut className="text-lg" />
+                            Logout
+                        </div>
                     </div>
                 </div>
-                </div>
-    )
-}
+            )
+            }
         </button >
     )
 }
