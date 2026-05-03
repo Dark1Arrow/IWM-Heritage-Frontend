@@ -1,13 +1,16 @@
 import React from 'react';
 import '../index.css';
 import { Star } from "lucide-react";
+import { useNavigate } from 'react-router-dom';
 
 const AboutPage = () => {
+  const navigate = useNavigate();
+  
   const challengeData = [
-    { title: "Scattered Information", text: "History and guides are spread across disjointed blogs, official sites, and oral histories, making it impossible to get a complete picture in one place.", img: "Rectangle 280.png" },
-    { title: "Outdated Guides", text: "Many available maps and tourism pamphlets are years out of date, leading explorers to closed locations or missing new key sites.", img: "Rectangle 307.png" },
-    { title: "Lack of Engagement", text: "Existing historical presentation is often text-heavy and uninspiring, failing to captivate younger generations or modern travelers.", img: "Rectangle 308.png" },
-    { title: "Hard-to-Access Stories", text: "The most unique cultural stories are locked away in difficult-to-find archives or require local connections, creating a high barrier for visitors.", img: "Rectangle 309.png" }
+    { title: "Scattered Information", text: "History and guides are spread across disjointed blogs, official sites, and oral histories, making it complete in one place.", img: "Rectangle 280.png" },
+    { title: "Outdated Guides", text: "Many available maps and tourism pamphlets are years out of date, leading explorers to closed locations.", img: "Rectangle 307.png" },
+    { title: "Lack of Engagement", text: "Existing historical presentation is often text-heavy and uninspiring, failing to captivate younger generations.", img: "Rectangle 308.png" },
+    { title: "Hard-to-Access Stories", text: "The most unique cultural stories are locked away in difficult-to-find archives, creating a high barrier for visitors.", img: "Rectangle 309.png" }
   ];
 
   const features = [
@@ -19,13 +22,12 @@ const AboutPage = () => {
 
   const audienceData = [
     { title: "Tourists", desc: "Discover popular places quickly without searching across multiple sources.", img: "Rectangle 324.png" },
-    { title: "Students", desc: "Learn about history, architecture, and important details in a clear and structured format.", img: "Rectangle 326.png" },
+    { title: "Students", desc: "Learn about history, architecture, and important details in a clear format.", img: "Rectangle 326.png" },
     { title: "Locals", desc: "Explore your own city in a new way and uncover stories you might have missed.", img: "Rectangle 328.png" }
   ];
 
   return (
     <>
-    
     <div className="about-page-wrapper">
 
       {/* --- SECTION 1: HERO --- */}
@@ -35,7 +37,12 @@ const AboutPage = () => {
           <div className="hero-text">
             <h2 className="main-heading">Discover Indore Through <br /> an Interactive Map</h2>
             <p className="tagline">Unveiling Indore's Soul: Where History Meets Storytelling.</p>
-            <button className="explore-btn">Explore Map</button>
+            <button 
+              onClick={() => navigate("/heritage-map")}
+              className="explore-btn"
+            >
+              Explore Map
+            </button>
             <p className="description">
               Explore famous places, learn their history, and uncover the stories behind every landmark — all in one place.
             </p>
@@ -64,7 +71,6 @@ const AboutPage = () => {
         <div className="challenges-cards-grid">
           {challengeData.map((item, index) => (
             <div className="challenge-info-card" key={index}>
-              {/* Dynamic image according to your requirement */}
               <div className="card-image-box"><img src={item.img} alt="" /></div>
               <div className="card-text-box">
                 <h3>{item.title}</h3>
@@ -144,26 +150,26 @@ const AboutPage = () => {
               </p>
             </div>
 
-            {/* Column 2: Navigation - Focused on your current pages */}
+            {/* Column 2: Navigation */}
             <div>
               <h4 className="text-[10px] uppercase tracking-[0.3em] font-bold text-amber-500/80 mb-6">Sitemap</h4>
               <ul className="space-y-4 text-sm font-light text-stone-300 uppercase tracking-wider">
-                <li className="hover:text-amber-400 transition-colors cursor-pointer">
-                  <a href="/">Home</a>
+                <li onClick={() => navigate("/")} className="hover:text-amber-400 transition-colors cursor-pointer">
+                  Home
                 </li>
-                <li className="hover:text-amber-400 transition-colors cursor-pointer">
-                  <a href="/about">About Archive</a>
+                <li onClick={() => navigate("/about")} className="hover:text-amber-400 transition-colors cursor-pointer">
+                  About Archive
                 </li>
-                <li className="hover:text-amber-400 transition-colors cursor-pointer">
-                  <a href="/map">Heritage Map</a>
+                <li onClick={() => navigate("/heritage-map")} className="hover:text-amber-400 transition-colors cursor-pointer">
+                  Heritage Map
                 </li>
-                <li className="hover:text-amber-400 transition-colors cursor-pointer">
-                  <a href="/dashboard">User Dashboard</a>
+                <li onClick={() => navigate("/dashboard/my-profile")} className="hover:text-amber-400 transition-colors cursor-pointer">
+                  User Dashboard
                 </li>
               </ul>
             </div>
 
-            {/* Column 3: Regional Details (Indore Focused) */}
+            {/* Column 3: Location */}
             <div>
               <h4 className="text-[10px] uppercase tracking-[0.3em] font-bold text-amber-500/80 mb-6">Location</h4>
               <p className="text-sm text-stone-400 font-light leading-relaxed">
@@ -173,11 +179,14 @@ const AboutPage = () => {
               </p>
             </div>
 
-            {/* Column 4: Dashboard Quick Link / Join */}
+            {/* Column 4: Dashboard Access */}
             <div className="bg-stone-800/20 p-6 border border-stone-800 rounded-sm">
               <h4 className="text-[10px] uppercase tracking-[0.3em] font-bold text-stone-100 mb-4">Collectors Access</h4>
               <p className="text-xs text-stone-500 mb-6 leading-relaxed">Join our community to save locations to your personal map dashboard.</p>
-              <button className="w-full py-3 bg-stone-100 text-stone-950 text-[10px] font-bold uppercase tracking-widest hover:bg-amber-500 transition-colors">
+              <button 
+                onClick={() => navigate("/dashboard/my-profile")}
+                className="w-full py-3 bg-stone-100 text-stone-950 text-[10px] font-bold uppercase tracking-widest hover:bg-amber-500 transition-colors"
+              >
                 Open Dashboard
               </button>
             </div>
